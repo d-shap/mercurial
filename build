@@ -1,0 +1,22 @@
+#!/bin/bash
+user="$1"
+if [ -z "$user" ];
+then
+    user=$USER
+fi
+uid=$(id -u $user)
+echo "User: $user ($uid)"
+
+group="$2"
+if [ -z "$group" ];
+then
+    group=$(id -gn $user)
+fi
+gid=$(id -g $group)
+echo "Group: $group ($gid)"
+
+docker build \
+    -t hgweb \
+    --build-arg hostuid=$uid \
+    --build-arg hostgid=$gid \
+    image

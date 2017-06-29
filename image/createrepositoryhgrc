@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "[web]" >> $1/.hg/hgrc
+echo "contact         = Repository contact person" >> $1/.hg/hgrc
+echo "description     = Repository description" >> $1/.hg/hgrc
+echo "" >> $1/.hg/hgrc
+echo "deny_read       =" >> $1/.hg/hgrc
+echo "allow_read      = *" >> $1/.hg/hgrc
+echo "" >> $1/.hg/hgrc
+echo "allowpull       = true" >> $1/.hg/hgrc
+echo "" >> $1/.hg/hgrc
+echo "deny_push       =" >> $1/.hg/hgrc
+echo "allow_push      = *" >> $1/.hg/hgrc
+echo "" >> $1/.hg/hgrc

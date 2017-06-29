@@ -1,0 +1,48 @@
+#!/bin/bash
+
+PIDFILE=/var/run/hgweb.pid
+
+hg() {
+    arguments=( "$@" )
+    fullRepositoryPath=
+    for i in "${!arguments[@]}"
+    do
+        if [[ "${arguments[i]}" == PATH=* ]];
+        then
+            relativePath=$(echo "${arguments[i]}"| cut -d'=' -f 2)
+            fullRepositoryPath="/mercurial/repositories/${relativePath}"
+            arguments[$i]="$fullRepositoryPath"
+        fi
+    done
+    CID=$(cat "$PIDFILE")
+    docker exec -it "$CID" "${arguments[@]}"
+    case $2 in
+        init)
+            docker exec -it "$CID" /mercurial/createrepositoryhgrc "$fullRepositoryPath"
+            ;;
+    esac
+}
+
+htpasswd() {
+    arguments=( "$@" )
+    for i in "${!arguments[@]}"
+    do
+        if [ "${arguments[i]}" == "passwdfile" ];
+        then
+            arguments[$i]="/mercurial/users"
+        fi
+    done
+    CID=$(cat "$PIDFILE")
+    docker exec -it "$CID" "${arguments[@]}"
+}
+
+case $1 in
+    hg)
+        hg $@
+        ;;
+    htpasswd)
+        htpasswd $@
+        ;;
+    *)
+        echo "Usage: $0 (hg | htpasswd)"
+esac

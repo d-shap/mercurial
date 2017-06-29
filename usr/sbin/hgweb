@@ -1,0 +1,10 @@
+#!/bin/bash
+docker run \
+    --rm \
+    --name hgweb \
+    -d \
+    -v /mercurial/users:/mercurial/users \
+    -v /mercurial/repositories:/mercurial/repositories \
+    -v /var/log/mercurial:/var/log/apache2 \
+    -p 8008:8008 \
+        hgweb
