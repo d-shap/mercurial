@@ -20,7 +20,7 @@ collapse        = true
 description     = Mercurial Repositories
 encoding        = UTF-8
 
-style           = paper
+style           = gitweb
 prefix          = /guestappname
 
 [trusted]
