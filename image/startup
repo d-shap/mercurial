@@ -1,2 +1,7 @@
 #!/bin/bash
+if [ "$WEB_STYLE" != "" ];
+then
+    sed -i 's|style           = gitweb|style           = '"$WEB_STYLE"'|' /etc/mercurial/hgrc
+fi
+
 /usr/sbin/apache2ctl -D FOREGROUND
