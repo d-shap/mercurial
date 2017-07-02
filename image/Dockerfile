@@ -29,8 +29,8 @@ COPY        createrepositoryhgrc /mercurial
 
 # Configure mercurial
 RUN         sed -i 's|/guestappname|/'"$guestappname"'|' /etc/mercurial/hgrc && \
-            sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
             chown mercurial:mercurial /etc/mercurial/hgrc && \
+            sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
             chmod a+x /mercurial/hgweb.cgi
 
 # Configure apache
