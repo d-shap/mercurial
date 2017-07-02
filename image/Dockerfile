@@ -45,7 +45,7 @@ RUN         sed -i 's|:80>|:'"$guestport"'>|' /etc/apache2/sites-available/000-d
             chown -R mercurial:mercurial /var/run/apache2 && \
             chown -R mercurial:mercurial /var/log/apache2
 
-# Grant permits for additional scripts
+# Grant permits for helper scripts
 RUN         chmod a+x /mercurial/startup && \
             chmod a+x /mercurial/createrepositoryhgrc
 
