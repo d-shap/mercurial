@@ -4,6 +4,8 @@ allow_read      =
 allowpull       = false
 deny_push       = *
 allow_push      =
+encoding        = UTF-8
+prefix          = /guestappname
 
 [trusted]
 users           = mercurial
