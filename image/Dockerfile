@@ -19,7 +19,8 @@ RUN         groupadd -g $hostgid mercurial && \
             useradd -u $hostuid -g $hostgid -M mercurial
 
 # Create folder for mercurial
-RUN         mkdir /mercurial
+RUN         mkdir /mercurial && \
+            chown mercurial:mercurial /mercurial
 
 COPY        hgrc /etc/mercurial
 COPY        hgweb.config /mercurial
@@ -28,9 +29,8 @@ COPY        startup /mercurial
 COPY        createrepositoryhgrc /mercurial
 
 # Configure mercurial
-RUN         chown mercurial:mercurial /etc/mercurial && \
-            sed -i 's|/guestappname|/'"$guestappname"'|' /etc/mercurial/hgrc && \
-            chown mercurial:mercurial /etc/mercurial/hgrc && \
+RUN         sed -i 's|/guestappname|/'"$guestappname"'|' /etc/mercurial/hgrc && \
+            chown mercurial:mercurial /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
             chmod a+x /mercurial/hgweb.cgi
 
