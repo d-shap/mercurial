@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ "$WEB_STYLE" != "" ];
 then
-    sed -i 's|style.*|style           = '"$WEB_STYLE"'|' /etc/mercurial/hgrc
+    sed -i 's|style.*|style           = '"$WEB_STYLE"'|' /mercurial/hgweb.config
 fi
 
 /usr/sbin/apache2ctl -D FOREGROUND
