@@ -1,3 +1,10 @@
+[web]
+deny_read       = *
+allow_read      =
+allowpull       = false
+deny_push       = *
+allow_push      =
+
 [trusted]
 users           = mercurial
 
