@@ -5,6 +5,10 @@ then
     user=$USER
 fi
 uid=$(id -u $user)
+if [ "$uid" == "" ];
+then
+    exit 1
+fi
 echo "User: $user ($uid)"
 
 group="$2"
@@ -13,6 +17,10 @@ then
     group=$(id -gn $user)
 fi
 gid=$(id -g $group)
+if [ "$gid" == "" ];
+then
+    exit 1
+fi
 echo "Group: $group ($gid)"
 
 docker build \
