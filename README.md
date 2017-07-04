@@ -107,7 +107,8 @@ sudo hgwebutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] 
 
 **passwdfile** should be spelled literally.
 
-### Mercurial repository management
+
+### Repository management
 ```
 sudo hgwebutil hg <command> <arguments>
 ```
@@ -127,10 +128,10 @@ sudo hgwebutil hg init PATH=/newreponame
 ```
 
 Apache mod_proxy configuration
------------------------
+------------------------------
 Mercurial web server can be located with another web applications.
 For example, bugzilla, artifactory, mercurial etc can be run as docker containers on the same host.
-In this case apache can be used to redirect requests to different docker containers.
+In this case apache server can be used to redirect requests to different docker containers.
 
 First, mod_proxy should be enabled
 ```
@@ -163,3 +164,18 @@ Finally, restart apache service
 ```
 sudo service apache2 restart
 ```
+
+Customization
+-------------
+### Change default theme
+Add **WEB_STYLE** environment variable to the docker run command
+```
+docker run ... -e WEB_STYLE=gitweb ...
+```
+
+Available themes are:
+* paper (default theme)
+* coal
+* spartan
+* monoblue
+* gitweb
