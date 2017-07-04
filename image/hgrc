@@ -1,11 +1,18 @@
+[server]
+bundle1         = false
+bundle1gd       = false
+validate        = true
+
 [web]
 deny_read       = *
 allow_read      =
 allowpull       = false
 deny_push       = *
 allow_push      =
+cache           = true
 encoding        = UTF-8
 prefix          = /guestappname
+templates       = /usr/share/mercurial/templates
 
 [trusted]
 users           = mercurial
