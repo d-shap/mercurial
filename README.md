@@ -14,7 +14,7 @@ To run container next volumes should be mapped
 
 Installation
 ------------
-Create user and group to own mercurial repositories and to run container
+Create user and group to own mercurial repositories and to run docker container
 ```
 sudo useradd -r mercurial
 ```
