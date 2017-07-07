@@ -3,8 +3,8 @@ docker run \
     --rm \
     --name hgweb \
     -d \
-    -v /var/log/mercurial:/mercurial/logs \
     -v /mercurial/repositories:/mercurial/repositories \
     -v /mercurial/users:/mercurial/users \
+    -v /var/log/mercurial:/mercurial/logs \
     -p 8008:8008 \
         hgweb
