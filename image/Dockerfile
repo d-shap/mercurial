@@ -22,9 +22,10 @@ RUN         apt-get update && \
 RUN         groupadd -g $hostgid mercurial && \
             useradd -u $hostuid -g $hostgid -M mercurial
 
-# Create folder for mercurial
+# Create folders for mercurial
 RUN         mkdir /mercurial && \
-            chown mercurial:mercurial /mercurial
+            mkdir /mercurial/logs && \
+            chown -R mercurial:mercurial /mercurial
 
 # Configure apache
 RUN         sed -i 's|:80>|:'"$guestport"'>|' /etc/apache2/sites-available/000-default.conf && \
@@ -36,7 +37,8 @@ RUN         sed -i 's|:80>|:'"$guestport"'>|' /etc/apache2/sites-available/000-d
             a2enconf servername && \
             a2enmod cgi && \
             a2ensite mercurial && \
-            chown -R mercurial:mercurial /var/log/apache2 && \
+            rm -r /var/log/apache2 && \
+            ln -s /mercurial/logs /var/log/apache2 && \
             chown -R mercurial:mercurial /var/run/apache2
 
 # Configure mercurial
