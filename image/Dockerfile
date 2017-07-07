@@ -9,6 +9,7 @@ ARG         guestappname=mercurial
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         APACHE_RUN_USER mercurial
 ENV         APACHE_RUN_GROUP mercurial
+ENV         GUEST_APP_NAME $guestappname
 
 COPY        . /tmp
 
@@ -16,7 +17,8 @@ COPY        . /tmp
 RUN         apt-get update && \
             apt-get install --assume-yes \
                 apache2 \
-                mercurial
+                mercurial && \
+            apt-get clean
 
 # Create user and group
 RUN         groupadd -g $hostgid mercurial && \
@@ -37,8 +39,10 @@ RUN         sed -i 's|:80>|:'"$guestport"'>|' /etc/apache2/sites-available/000-d
             a2enconf servername && \
             a2enmod cgi && \
             a2ensite mercurial && \
-            rm -r /var/log/apache2 && \
+            rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
+            chown -R mercurial:mercurial /var/log/apache2 && \
+            chown -R mercurial:mercurial /var/lock/apache2 && \
             chown -R mercurial:mercurial /var/run/apache2
 
 # Configure mercurial
