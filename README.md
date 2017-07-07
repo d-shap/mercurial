@@ -9,8 +9,8 @@ Web access is restricted with BASIC authentication for push requests, managed wi
 
 To run container next volumes should be mapped
 * repository root folder
+* htpasswd file to store hashes of user passwords
 * log folder
-* htpasswd file to store user passwords
 
 Installation
 ------------
@@ -29,7 +29,7 @@ Execute **build**
 sudo ./build mercurial mercurial
 ```
 
-Create folder for mercurial repository
+Create folders for mercurial repository
 ```
 sudo mkdir /mercurial
 ```
@@ -143,7 +143,7 @@ First, mod_proxy should be enabled
 sudo a2enmod proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 ```
 
-Configure proxy
+Then configure proxy
 ```
 <VirtualHost *:80>
 
