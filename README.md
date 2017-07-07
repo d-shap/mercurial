@@ -86,6 +86,11 @@ Register service
 sudo update-rc.d hgweb defaults
 ```
 
+Start mercurial service
+```
+sudo service hgweb start
+```
+
 Management
 ----------
 ### Service management
