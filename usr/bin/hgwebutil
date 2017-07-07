@@ -15,7 +15,15 @@ hg() {
         fi
     done
     CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
     docker exec -it "$CID" "${arguments[@]}"
+    if [ $? -ne 0 ];
+    then
+        exit 1
+    fi
     case $2 in
         init)
             docker exec -it "$CID" /mercurial/createrepositoryhgrc "$fullRepositoryPath"
@@ -33,6 +41,10 @@ htpasswd() {
         fi
     done
     CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
     docker exec -it "$CID" "${arguments[@]}"
 }
 
@@ -45,4 +57,5 @@ case $1 in
         ;;
     *)
         echo "Usage: $0 (hg | htpasswd)"
+        ;;
 esac
