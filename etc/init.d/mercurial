@@ -1,6 +1,6 @@
 #!/bin/bash
 ### BEGIN INIT INFO
-# Provides:             hgweb
+# Provides:             mercurial
 # Required-Start:       docker
 # Required-Stop:        docker
 # Default-Start:        2 3 4 5
@@ -8,9 +8,9 @@
 # Short-Description:    Mercurial web service
 ### END INIT INFO
 
-IMAGENAME=hgweb
-EXECUTABLE=/usr/sbin/hgweb
-PIDFILE=/var/run/hgweb.pid
+IMAGENAME=mercurial
+EXECUTABLE=/usr/sbin/mercurial
+PIDFILE=/var/run/mercurial.pid
 
 start() {
     shouldStart=
