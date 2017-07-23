@@ -55,58 +55,58 @@ sudo chown -R mercurial:mercurial /mercurial
 sudo chown mercurial:mercurial /var/log/mercurial
 ```
 
-Copy **etc/init.d/hgweb** to **/etc/init.d** folder
+Copy **etc/init.d/mercurial** to **/etc/init.d** folder
 ```
-sudo cp ./etc/init.d/hgweb /etc/init.d
-```
-
-Copy **usr/sbin/hgweb** to **/usr/sbin** folder
-```
-sudo cp ./usr/sbin/hgweb /usr/sbin
+sudo cp ./etc/init.d/mercurial /etc/init.d
 ```
 
-Copy **usr/bin/hgwebutil** to **/usr/bin** folder
+Copy **usr/sbin/mercurial** to **/usr/sbin** folder
 ```
-sudo cp ./usr/bin/hgwebutil /usr/bin
+sudo cp ./usr/sbin/mercurial /usr/sbin
+```
+
+Copy **usr/bin/mercurialutil** to **/usr/bin** folder
+```
+sudo cp ./usr/bin/mercurialutil /usr/bin
 ```
 
 Make all files executable
 ```
-sudo chmod a+x /etc/init.d/hgweb
+sudo chmod a+x /etc/init.d/mercurial
 ```
 ```
-sudo chmod a+x /usr/sbin/hgweb
+sudo chmod a+x /usr/sbin/mercurial
 ```
 ```
-sudo chmod a+x /usr/bin/hgwebutil
+sudo chmod a+x /usr/bin/mercurialutil
 ```
 
 Register service
 ```
-sudo update-rc.d hgweb defaults
+sudo update-rc.d mercurial defaults
 ```
 
 Start mercurial service
 ```
-sudo service hgweb start
+sudo service mercurial start
 ```
 
 Management
 ----------
 ### Service management
 ```
-sudo service hgweb (start|stop|status|restart)
+sudo service mercurial (start|stop|status|restart)
 ```
 
 ### User management
 ```
-sudo hgwebutil htpasswd [ -c ] [ -i ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username>
+sudo mercurialutil htpasswd [ -c ] [ -i ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username>
 ```
 ```
-sudo hgwebutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username> <password>
+sudo mercurialutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username> <password>
 ```
 
-**htpasswd** command is passed to the running docker container with **hgwebutil** utility.
+**htpasswd** command is passed to the running docker container with **mercurialutil** utility.
 
 **username** and **password** should be replaced with real values.
 
@@ -115,10 +115,10 @@ sudo hgwebutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] 
 
 ### Repository management
 ```
-sudo hgwebutil hg <command> <arguments>
+sudo mercurialutil hg <command> <arguments>
 ```
 
-**hg** command is passed to the running docker container with **hgwebutil** utility.
+**hg** command is passed to the running docker container with **mercurialutil** utility.
 
 If command needs a path to the repository, this path is specified like this
 ```
@@ -129,7 +129,7 @@ where **/repopath/reponame** is path started from **/mercurial/repositories**.
 
 For example, to create a new repository, this command can be used
 ```
-sudo hgwebutil hg init PATH=/newreponame
+sudo mercurialutil hg init PATH=/newreponame
 ```
 
 Apache mod_proxy configuration
