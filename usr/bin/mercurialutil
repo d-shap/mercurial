@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PIDFILE=/var/run/hgweb.pid
+PIDFILE=/var/run/mercurial.pid
 
 hg() {
     arguments=( "$@" )
