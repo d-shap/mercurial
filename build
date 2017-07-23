@@ -24,7 +24,7 @@ fi
 echo "Group: $group ($gid)"
 
 docker build \
-    -t hgweb \
+    -t mercurial \
     --build-arg hostuid=$uid \
     --build-arg hostgid=$gid \
     image
