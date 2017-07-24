@@ -65,9 +65,9 @@ Copy **usr/sbin/mercurial** to **/usr/sbin** folder
 sudo cp ./usr/sbin/mercurial /usr/sbin
 ```
 
-Copy **usr/bin/mercurialutil** to **/usr/bin** folder
+Copy **usr/bin/mutil** to **/usr/bin** folder
 ```
-sudo cp ./usr/bin/mercurialutil /usr/bin
+sudo cp ./usr/bin/mutil /usr/bin
 ```
 
 Make all files executable
@@ -78,7 +78,7 @@ sudo chmod a+x /etc/init.d/mercurial
 sudo chmod a+x /usr/sbin/mercurial
 ```
 ```
-sudo chmod a+x /usr/bin/mercurialutil
+sudo chmod a+x /usr/bin/mutil
 ```
 
 Register service
@@ -100,13 +100,13 @@ sudo service mercurial (start|stop|status|restart)
 
 ### User management
 ```
-sudo mercurialutil htpasswd [ -c ] [ -i ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username>
+sudo mutil htpasswd [ -c ] [ -i ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username>
 ```
 ```
-sudo mercurialutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username> <password>
+sudo mutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username> <password>
 ```
 
-**htpasswd** command is passed to the running docker container with **mercurialutil** utility.
+**htpasswd** command is passed to the running docker container with **mutil** utility.
 
 **username** and **password** should be replaced with real values.
 
@@ -115,10 +115,10 @@ sudo mercurialutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -
 
 ### Repository management
 ```
-sudo mercurialutil hg <command> <arguments>
+sudo mutil hg <command> <arguments>
 ```
 
-**hg** command is passed to the running docker container with **mercurialutil** utility.
+**hg** command is passed to the running docker container with **mutil** utility.
 
 If command needs a path to the repository, this path is specified like this
 ```
@@ -129,7 +129,7 @@ where **/repopath/reponame** is path started from **/mercurial/repositories**.
 
 For example, to create a new repository, this command can be used
 ```
-sudo mercurialutil hg init PATH=/newreponame
+sudo mutil hg init PATH=/newreponame
 ```
 
 Apache mod_proxy configuration
