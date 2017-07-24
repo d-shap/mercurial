@@ -131,6 +131,7 @@ For example, to create a new repository, this command can be used
 ```
 sudo mutil hg init PATH=/newreponame
 ```
+and new repository **/mercurial/repositories/newreponame** would be created.
 
 Apache mod_proxy configuration
 ------------------------------
