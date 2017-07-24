@@ -136,7 +136,7 @@ and new repository **/mercurial/repositories/newreponame** would be created.
 Apache mod_proxy configuration
 ------------------------------
 Mercurial web server can be located with another web applications.
-For example, bugzilla, artifactory, mercurial etc can be run as docker containers on the same host.
+For example, mercurial, bugzilla, artifactory etc can be run as docker containers on the same host.
 In this case apache server can be used to redirect requests to different docker containers.
 
 First, mod_proxy should be enabled
