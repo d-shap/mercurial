@@ -26,7 +26,7 @@ sudo chmod u+x ./build
 
 Execute **build**
 ```
-sudo ./build mercurial mercurial
+sudo ./build mercurial
 ```
 
 Create folders for mercurial repository
