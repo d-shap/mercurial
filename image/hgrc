@@ -20,3 +20,4 @@ users           = mercurial
 [extensions]
 hgext.bookmarks =
 strip           =
+rebase          =
