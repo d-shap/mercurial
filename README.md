@@ -133,6 +133,11 @@ sudo mutil hg init PATH=/newreponame
 ```
 and new repository **/mercurial/repositories/newreponame** would be created.
 
+### Command line
+```
+sudo mutil bash
+```
+
 Apache mod_proxy configuration
 ------------------------------
 Mercurial web server can be located with another web applications.
