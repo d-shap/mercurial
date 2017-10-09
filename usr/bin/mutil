@@ -48,12 +48,25 @@ htpasswd() {
     docker exec -it "$CID" "${arguments[@]}"
 }
 
+bash() {
+    CID=$(cat "$PIDFILE")
+    CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
+    docker exec -it "$CID" "/bin/bash"
+}
+
 case $1 in
     hg)
         hg $@
         ;;
     htpasswd)
         htpasswd $@
+        ;;
+    bash)
+        bash
         ;;
     *)
         echo "Usage: $0 (hg | htpasswd)"
