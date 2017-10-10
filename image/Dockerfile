@@ -18,8 +18,7 @@ RUN         apt-get update && \
             apt-get install --assume-yes \
                 apache2 \
                 mercurial \
-                tcl8.5 \
-                tk8.5 && \
+                tk && \
             apt-get clean
 
 # Create user and group
