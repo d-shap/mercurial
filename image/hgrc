@@ -18,6 +18,8 @@ templates       = /usr/share/mercurial/templates
 users           = mercurial
 
 [extensions]
+graphlog        =
 hgext.bookmarks =
-strip           =
+hgk             =
 rebase          =
+strip           =
