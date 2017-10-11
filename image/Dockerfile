@@ -18,7 +18,8 @@ RUN         apt-get update && \
             apt-get install --assume-yes \
                 apache2 \
                 mercurial \
-                tk && \
+                tk \
+                vim && \
             apt-get clean
 
 # Create user and group
