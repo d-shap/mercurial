@@ -24,6 +24,7 @@ users           = mercurial
 graphlog        =
 hgext.bookmarks =
 hgk             =
+histedit        =
 progress        =
 purge           =
 rebase          =
