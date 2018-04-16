@@ -26,7 +26,7 @@ hg() {
     fi
     case $2 in
         init)
-            docker exec -it "$CID" /mercurial/createrepositoryhgrc "$fullRepositoryPath"
+            docker exec -it "$CID" /mercurial/scripts/createrepositoryhgrc "$fullRepositoryPath"
             ;;
     esac
 }
@@ -48,6 +48,27 @@ htpasswd() {
     docker exec -it "$CID" "${arguments[@]}"
 }
 
+backup() {
+    arguments=( "$@" )
+    CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
+    docker exec -it "$CID" /mercurial/scripts/backup "${arguments[@]}"
+}
+
+restore() {
+    arguments=( "$@" )
+    CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
+    docker exec -it "$CID" /mercurial/scripts/restore "${arguments[@]}"
+    echo "Move repositories/users file to the appropriate place!"
+}
+
 bash() {
     CID=$(cat "$PIDFILE")
     if [ "$CID" == "" ];
@@ -64,10 +85,16 @@ case $1 in
     htpasswd)
         htpasswd $@
         ;;
+    backup)
+        backup $@
+        ;;
+    restore)
+        restore $@
+        ;;
     bash)
         bash
         ;;
     *)
-        echo "Usage: $0 (hg | htpasswd)"
+        echo "Usage: $0 (hg | htpasswd | backup | restore | bash)"
         ;;
 esac
