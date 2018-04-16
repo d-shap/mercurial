@@ -1,0 +1,7 @@
+#!/bin/bash
+TEMPTILE="/mercurial/backups/mercurial-copy.tar.gz"
+FILE="/mercurial/backups/mercurial.tar.gz"
+
+cd /mercurial
+tar -czf $TEMPTILE repositories users
+mv $TEMPTILE $FILE
