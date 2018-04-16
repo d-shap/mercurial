@@ -3,8 +3,10 @@ docker run \
     --rm \
     --name mercurial \
     -d \
+    -v /etc/localtime:/etc/localtime \
     -v /mercurial/repositories:/mercurial/repositories \
     -v /mercurial/users:/mercurial/users \
     -v /var/log/mercurial:/mercurial/logs \
+    -v /var/backups/mercurial:/mercurial/backups \
     -p 8008:8008 \
         mercurial
