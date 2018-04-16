@@ -26,9 +26,13 @@ RUN         apt-get update && \
 RUN         groupadd -g $hostgid mercurial && \
             useradd -u $hostuid -g $hostgid -M mercurial
 
-# Create folders for mercurial
+# Create files and folders for mercurial
 RUN         mkdir /mercurial && \
+            mkdir /mercurial/repositories && \
+            mkdir /mercurial/scripts && \
+            touch /mercurial/users && \
             mkdir /mercurial/logs && \
+            mkdir /mercurial/backups && \
             chown -R mercurial:mercurial /mercurial
 
 # Configure apache
@@ -56,13 +60,17 @@ RUN         mv /tmp/hgrc /etc/mercurial && \
             chmod a+x /mercurial/hgweb.cgi
 
 # Configure helper scripts
-RUN         mv /tmp/startup /mercurial && \
-            chmod a+x /mercurial/startup && \
-            mv /tmp/createrepositoryhgrc /mercurial && \
-            chmod a+x /mercurial/createrepositoryhgrc
+RUN         mv /tmp/startup /mercurial/scripts && \
+            chmod a+x /mercurial/scripts/startup && \
+            mv /tmp/createrepositoryhgrc /mercurial/scripts && \
+            chmod a+x /mercurial/scripts/createrepositoryhgrc && \
+            mv /tmp/backup /mercurial/scripts && \
+            chmod a+x /mercurial/scripts/backup && \
+            mv /tmp/restore /mercurial/scripts && \
+            chmod a+x /mercurial/scripts/restore
 
 USER        mercurial
 
 EXPOSE      $guestport
 
-ENTRYPOINT  ["/mercurial/startup"]
+ENTRYPOINT  ["/mercurial/scripts/startup"]
