@@ -47,12 +47,20 @@ Create folder for logs
 sudo mkdir /var/log/mercurial
 ```
 
+Create folder for backups
+```
+sudo mkdir /var/backups/mercurial
+```
+
 Grant permit to all files and folders
 ```
 sudo chown -R mercurial:mercurial /mercurial
 ```
 ```
 sudo chown mercurial:mercurial /var/log/mercurial
+```
+```
+sudo chown mercurial:mercurial /var/backups/mercurial
 ```
 
 Copy **etc/init.d/mercurial** to **/etc/init.d** folder
@@ -127,13 +135,26 @@ PATH=/repopath/reponame
 
 where **/repopath/reponame** is path started from **/mercurial/repositories**.
 
-For example, to create a new repository, this command can be used
+For example, to create a new repository, this command can be used:
 ```
 sudo mutil hg init PATH=/newreponame
 ```
 and new repository **/mercurial/repositories/newreponame** would be created.
 
-### Command line
+### Create repository backup
+```
+sudo mutil backup
+```
+
+### Restore repository backup
+```
+sudo mutil restore [ replace ]
+```
+
+If **replace** argument is specified, then all repositories are deleted and then restored from backup.
+With this argument repositories can be irrevocably deleted.
+
+### Command line (bash)
 ```
 sudo mutil bash
 ```
