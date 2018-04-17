@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$WEB_COLLAPSE" != "" ];
+then
+    sed -i 's|collapse.*|collapse        = '"$WEB_COLLAPSE"'|' /mercurial/hgweb.config
+fi
 if [ "$WEB_STYLE" != "" ];
 then
     sed -i 's|style.*|style           = '"$WEB_STYLE"'|' /mercurial/hgweb.config
