@@ -7,4 +7,6 @@ then
     cd /mercurial
     tar -czf $TEMPTILE repositories users
     mv $TEMPTILE $FILE
+else
+    echo "Usage: $0 <file>"
 fi
