@@ -7,7 +7,7 @@ This user owns mercurial process and owns mercurial repositories.
 
 Web access is restricted with BASIC authentication for push requests, managed with Apache htpasswd.
 
-To run container next volumes should be mapped
+To run container next volumes should be mapped:
 * repository root folder
 * htpasswd file to store hashes of user passwords
 * log folder
@@ -15,22 +15,22 @@ To run container next volumes should be mapped
 
 Installation
 ------------
-Create user and group to own mercurial repositories and to run docker container
+Create user and group to own mercurial repositories and to run docker container:
 ```
 sudo useradd -r mercurial
 ```
 
-Make **build** executable
+Make **build** executable:
 ```
 sudo chmod u+x ./build
 ```
 
-Execute **build**
+Execute **build**:
 ```
 sudo ./build mercurial
 ```
 
-Create folders for mercurial repository
+Create folders for mercurial repository:
 ```
 sudo mkdir /mercurial
 ```
@@ -38,22 +38,22 @@ sudo mkdir /mercurial
 sudo mkdir /mercurial/repositories
 ```
 
-Create file to store user passwords
+Create file to store user passwords:
 ```
 sudo touch /mercurial/users
 ```
 
-Create folder for logs
+Create folder for logs:
 ```
 sudo mkdir /var/log/mercurial
 ```
 
-Create folder for backups
+Create folder for backups:
 ```
 sudo mkdir /var/backups/mercurial
 ```
 
-Grant permit to all files and folders
+Grant permit to all files and folders:
 ```
 sudo chown -R mercurial:mercurial /mercurial
 ```
@@ -64,22 +64,22 @@ sudo chown mercurial:mercurial /var/log/mercurial
 sudo chown mercurial:mercurial /var/backups/mercurial
 ```
 
-Copy **etc/init.d/mercurial** to **/etc/init.d** folder
+Copy **etc/init.d/mercurial** to **/etc/init.d** folder:
 ```
 sudo cp ./etc/init.d/mercurial /etc/init.d
 ```
 
-Copy **usr/sbin/mercurial** to **/usr/sbin** folder
+Copy **usr/sbin/mercurial** to **/usr/sbin** folder:
 ```
 sudo cp ./usr/sbin/mercurial /usr/sbin
 ```
 
-Copy **usr/bin/mutil** to **/usr/bin** folder
+Copy **usr/bin/mutil** to **/usr/bin** folder:
 ```
 sudo cp ./usr/bin/mutil /usr/bin
 ```
 
-Make all files executable
+Make all files executable:
 ```
 sudo chmod a+x /etc/init.d/mercurial
 ```
@@ -90,12 +90,12 @@ sudo chmod a+x /usr/sbin/mercurial
 sudo chmod a+x /usr/bin/mutil
 ```
 
-Register service
+Register service:
 ```
 sudo update-rc.d mercurial defaults
 ```
 
-Start mercurial service
+Start mercurial service:
 ```
 sudo service mercurial start
 ```
@@ -129,22 +129,19 @@ sudo mutil hg <command> <arguments>
 
 **hg** command is passed to the running docker container with **mutil** utility.
 
-If command needs a path to the repository, this path is specified like this
+If command needs a path to the repository, this path is specified like this:
 ```
 PATH=/repopath/reponame
 ```
 
-where **/repopath/reponame** is path started from **/mercurial/repositories**.
-
-For example, to create a new repository, this command can be used:
-```
-sudo mutil hg init PATH=/newreponame
-```
-and new repository **/mercurial/repositories/newreponame** would be created.
-
 ### Create repository backup
 ```
 sudo mutil backup
+```
+
+Backups can be created with cron job:
+```
+sudo crontab -l | { cat; echo "10 2 * * * /usr/bin/mutil backup"; echo ""; } | sudo crontab -
 ```
 
 ### Restore repository backup
@@ -198,9 +195,20 @@ Finally, restart apache service
 sudo service apache2 restart
 ```
 
-Customization
--------------
-### Change default theme
+HOW TO
+------
+### How to create new user
+```
+sudo mutil htpasswd passwdfile <username>
+```
+
+### How to create new repository
+```
+sudo mutil hg init PATH=/newreponame
+```
+and new repository **/mercurial/repositories/newreponame** would be created.
+
+### How to change default theme
 Add **WEB_STYLE** environment variable to the docker run command
 ```
 docker run ... -e WEB_STYLE=gitweb ...
