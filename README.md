@@ -5,8 +5,6 @@ Docker image for mercurial web server.
 Container runs as non-root user.
 This user owns mercurial process and owns mercurial repositories.
 
-Web access is restricted with BASIC authentication for push requests, managed with Apache htpasswd.
-
 To run container next volumes should be mapped:
 * repository root folder
 * htpasswd file to store hashes of user passwords
