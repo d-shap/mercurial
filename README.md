@@ -168,12 +168,12 @@ Mercurial web server can be located with another web applications.
 For example, mercurial, bugzilla, wiki etc can be run as docker containers on the same host.
 In this case apache server can be used to redirect requests to different docker containers.
 
-First, mod_proxy should be enabled
+First, mod_proxy should be enabled:
 ```
 sudo a2enmod proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 ```
 
-Then configure proxy
+Then configure proxy:
 ```
 <VirtualHost *:80>
 
@@ -195,7 +195,7 @@ ProxyPassReverse /mercurial http://localhost:8008/mercurial
 </VirtualHost>
 ```
 
-Finally, restart apache service
+Finally, restart apache service:
 ```
 sudo service apache2 restart
 ```
