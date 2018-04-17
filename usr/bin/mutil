@@ -70,7 +70,7 @@ backup() {
         exit 1
     fi
 
-    docker exec -it "$CID" /mercurial/scripts/backup "${arguments[1]}"
+    docker exec "$CID" /mercurial/scripts/backup "${arguments[1]}"
     if [ $? -ne 0 ];
     then
         exit 2
@@ -86,7 +86,7 @@ restore() {
         exit 1
     fi
 
-    docker exec -it "$CID" /mercurial/scripts/restore "${arguments[1]}"
+    docker exec "$CID" /mercurial/scripts/restore "${arguments[1]}"
     if [ $? -ne 0 ];
     then
         exit 2
