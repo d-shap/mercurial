@@ -202,12 +202,12 @@ sudo service apache2 restart
 
 HOW TO
 ------
-### How to create new user
+### How to create a new user
 ```
 sudo mutil htpasswd passwdfile <username>
 ```
 
-### How to create new repository
+### How to create a new repository
 ```
 sudo mutil hg init PATH=/newreponame
 ```
@@ -216,15 +216,15 @@ sudo mutil hg init PATH=/newrepopath/newreponame
 ```
 
 ### How to change repository description
-Edit contact and description fields in *hgrc* file:
+Edit *contact* and *description* fields in *hgrc* file:
 ```
-sudo vi /newrepopath/newreponame/.hg/hgrc
+sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
 ### How to restrict access to repository
-Edit allow_read and allow_push fields in *hgrc* file:
+Edit *allow_read* and *allow_push* fields in *hgrc* file:
 ```
-sudo vi /newrepopath/newreponame/.hg/hgrc
+sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
 ### How to change default theme
