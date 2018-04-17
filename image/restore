@@ -1,18 +1,6 @@
 #!/bin/bash
 FILE="/mercurial/backups/mercurial.tar.gz"
 
-arguments=( "$@" )
-for i in "${!arguments[@]}"
-do
-    if [ "${arguments[i]}" == "replace" ];
-    then
-        if [ -e "$FILE" ];
-        then
-            rm -rf /mercurial/repositories/*
-        fi
-    fi
-done
-
 if [ -e "$FILE" ];
 then
     cd /mercurial
