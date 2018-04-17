@@ -11,6 +11,7 @@ To run container next volumes should be mapped
 * repository root folder
 * htpasswd file to store hashes of user passwords
 * log folder
+* backups folder
 
 Installation
 ------------
