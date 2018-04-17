@@ -1,5 +1,5 @@
 #!/bin/bash
-FILE="/mercurial/backups/mercurial.tar.gz"
+FILE="/mercurial/backups/$1.tar.gz"
 
 if [ -e "$FILE" ];
 then
