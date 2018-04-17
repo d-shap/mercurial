@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$WEB_DESCRIPTION" != "" ];
+then
+    sed -i 's|description.*|description     = '"$WEB_DESCRIPTION"'|' /mercurial/hgweb.config
+fi
 if [ "$WEB_STYLE" != "" ];
 then
     sed -i 's|style.*|style           = '"$WEB_STYLE"'|' /mercurial/hgweb.config
