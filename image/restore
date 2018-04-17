@@ -1,10 +1,13 @@
 #!/bin/bash
-FILE="/mercurial/backups/$1.tar.gz"
-
-if [ -e "$FILE" ];
+if [ "$1" != "" ];
 then
-    cd /mercurial
-    tar -xzf $FILE --exclude='users'
-    cd /mercurial/repositories
-    tar -xzf $FILE users
+    FILE="/mercurial/backups/$1.tar.gz"
+
+    if [ -e "$FILE" ];
+    then
+        cd /mercurial
+        tar -xzf $FILE --exclude='users'
+        cd /mercurial/repositories
+        tar -xzf $FILE users
+    fi
 fi
