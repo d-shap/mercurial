@@ -1,8 +1,6 @@
 #!/bin/bash
-if [ "$1" == "" ];
+if [ "$1" != "" ];
 then
-    echo "Usage: $0 <file>"
-else
     TEMPTILE="/mercurial/backups/tmp_$1.tar.gz"
     FILE="/mercurial/backups/$1.tar.gz"
 
