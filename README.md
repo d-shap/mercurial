@@ -144,7 +144,7 @@ The backup contains **/mercurial/repositories** folder and **/mercurial/users** 
 sudo mutil restore
 ```
 
-After backup is restored, you should restore file with passwords:
+After backup is restored, you should restore file with user passwords:
 ```
 sudo service mercurial stop
 ```
