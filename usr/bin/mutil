@@ -14,19 +14,26 @@ hg() {
             arguments[$i]="$fullRepositoryPath"
         fi
     done
+
     CID=$(cat "$PIDFILE")
     if [ "$CID" == "" ];
     then
         exit 1
     fi
+
     docker exec -it "$CID" "${arguments[@]}"
     if [ $? -ne 0 ];
     then
-        exit 1
+        exit 2
     fi
+
     case $2 in
         init)
             docker exec -it "$CID" /mercurial/scripts/createrepositoryhgrc "$fullRepositoryPath"
+            if [ $? -ne 0 ];
+            then
+                exit 2
+            fi
             ;;
     esac
 }
@@ -40,42 +47,67 @@ htpasswd() {
             arguments[$i]="/mercurial/users"
         fi
     done
+
     CID=$(cat "$PIDFILE")
     if [ "$CID" == "" ];
     then
         exit 1
     fi
+
     docker exec -it "$CID" "${arguments[@]}"
+    if [ $? -ne 0 ];
+    then
+        exit 2
+    fi
 }
 
 backup() {
     arguments=( "$@" )
+
     CID=$(cat "$PIDFILE")
     if [ "$CID" == "" ];
     then
         exit 1
     fi
+
     docker exec -it "$CID" /mercurial/scripts/backup "${arguments[@]}"
+    if [ $? -ne 0 ];
+    then
+        exit 2
+    fi
 }
 
 restore() {
     arguments=( "$@" )
+
     CID=$(cat "$PIDFILE")
     if [ "$CID" == "" ];
     then
         exit 1
     fi
+
     docker exec -it "$CID" /mercurial/scripts/restore "${arguments[@]}"
+    if [ $? -ne 0 ];
+    then
+        exit 2
+    fi
+
     echo "Move repositories/users file to the appropriate location!"
 }
 
 bash() {
     CID=$(cat "$PIDFILE")
+
     if [ "$CID" == "" ];
     then
         exit 1
     fi
+
     docker exec -it "$CID" sh -c "cd /mercurial/repositories && /bin/bash"
+    if [ $? -ne 0 ];
+    then
+        exit 2
+    fi
 }
 
 case $1 in
