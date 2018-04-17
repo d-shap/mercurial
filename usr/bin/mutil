@@ -127,6 +127,6 @@ case $1 in
         bash
         ;;
     *)
-        echo "Usage: $0 (hg | htpasswd | backup | restore | bash)"
+        echo "Usage: $0 (htpasswd | hg | backup | restore | bash)"
         ;;
 esac
