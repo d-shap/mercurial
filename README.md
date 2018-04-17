@@ -228,7 +228,11 @@ sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
 ### How to change default theme
-Add **WEB_STYLE** environment variable to the docker run command
+```
+sudo vi /usr/sbin/mercurial
+```
+
+Add **WEB_STYLE** environment variable to the docker run command:
 ```
 docker run ... -e WEB_STYLE=gitweb ...
 ```
