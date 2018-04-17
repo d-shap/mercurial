@@ -134,14 +134,14 @@ PATH=/repopath/reponame
 
 ### Create repository backup
 ```
-sudo mutil backup
+sudo mutil backup <filename>
 ```
 
-The backup contains **/mercurial/repositories** folder and **/mercurial/users** file.
+The backup file **<filename>.tar.gz** contains **/mercurial/repositories** folder and **/mercurial/users** file.
 
 ### Restore repository backup
 ```
-sudo mutil restore
+sudo mutil restore <filename>
 ```
 
 After backup is restored, you should restore file with user passwords:
@@ -225,14 +225,14 @@ Edit **allow_read** and **allow_push** fields in **hgrc** file:
 sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
-### How to disable multi-level navigable directory hierarchy
+### How to change title of web application
 ```
 sudo vi /usr/sbin/mercurial
 ```
 
-Add **WEB_COLLAPSE** environment variable to the docker run command:
+Add **WEB_DESCRIPTION** environment variable to the docker run command:
 ```
-docker run ... -e WEB_COLLAPSE=false ...
+docker run ... -e WEB_DESCRIPTION="New description" ...
 ```
 
 ### How to change default theme
@@ -242,7 +242,7 @@ sudo vi /usr/sbin/mercurial
 
 Add **WEB_STYLE** environment variable to the docker run command:
 ```
-docker run ... -e WEB_STYLE=gitweb ...
+docker run ... -e WEB_STYLE="gitweb" ...
 ```
 
 Available themes are:
@@ -252,7 +252,17 @@ Available themes are:
 * monoblue
 * gitweb
 
+### How to disable multi-level directory hierarchy
+```
+sudo vi /usr/sbin/mercurial
+```
+
+Add **WEB_COLLAPSE** environment variable to the docker run command:
+```
+docker run ... -e WEB_COLLAPSE="false" ...
+```
+
 ### How to create cron job for backups
 ```
-sudo crontab -l | { cat; echo "10 2 * * * /usr/bin/mutil backup"; echo ""; } | sudo crontab -
+sudo crontab -l | { cat; echo "minute hour * * * /usr/bin/mutil backup <filename>"; echo ""; } | sudo crontab -
 ```
