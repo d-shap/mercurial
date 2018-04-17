@@ -215,6 +215,18 @@ sudo mutil hg init PATH=/newreponame
 sudo mutil hg init PATH=/newrepopath/newreponame
 ```
 
+### How to change repository description
+Edit contact and description fields in *hgrc* file:
+```
+sudo vi /newrepopath/newreponame/.hg/hgrc
+```
+
+### How to restrict access to repository
+Edit allow_read and allow_push fields in *hgrc* file:
+```
+sudo vi /newrepopath/newreponame/.hg/hgrc
+```
+
 ### How to change default theme
 Add **WEB_STYLE** environment variable to the docker run command
 ```
