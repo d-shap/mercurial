@@ -2,6 +2,29 @@
 
 PIDFILE=/var/run/mercurial.pid
 
+htpasswd() {
+    arguments=( "$@" )
+    for i in "${!arguments[@]}"
+    do
+        if [ "${arguments[i]}" == "passwdfile" ];
+        then
+            arguments[$i]="/mercurial/users"
+        fi
+    done
+
+    CID=$(cat "$PIDFILE")
+    if [ "$CID" == "" ];
+    then
+        exit 1
+    fi
+
+    docker exec -it "$CID" "${arguments[@]}"
+    if [ $? -ne 0 ];
+    then
+        exit 2
+    fi
+}
+
 hg() {
     arguments=( "$@" )
     fullRepositoryPath=
@@ -36,29 +59,6 @@ hg() {
             fi
             ;;
     esac
-}
-
-htpasswd() {
-    arguments=( "$@" )
-    for i in "${!arguments[@]}"
-    do
-        if [ "${arguments[i]}" == "passwdfile" ];
-        then
-            arguments[$i]="/mercurial/users"
-        fi
-    done
-
-    CID=$(cat "$PIDFILE")
-    if [ "$CID" == "" ];
-    then
-        exit 1
-    fi
-
-    docker exec -it "$CID" "${arguments[@]}"
-    if [ $? -ne 0 ];
-    then
-        exit 2
-    fi
 }
 
 backup() {
@@ -111,11 +111,11 @@ bash() {
 }
 
 case $1 in
-    hg)
-        hg $@
-        ;;
     htpasswd)
         htpasswd $@
+        ;;
+    hg)
+        hg $@
         ;;
     backup)
         backup $@
