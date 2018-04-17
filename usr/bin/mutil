@@ -66,7 +66,7 @@ restore() {
         exit 1
     fi
     docker exec -it "$CID" /mercurial/scripts/restore "${arguments[@]}"
-    echo "Move repositories/users file to the appropriate place!"
+    echo "Move repositories/users file to the appropriate location!"
 }
 
 bash() {
