@@ -225,6 +225,16 @@ Edit **allow_read** and **allow_push** fields in **hgrc** file:
 sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
+### How to disable multi-level navigable directory hierarchy
+```
+sudo vi /usr/sbin/mercurial
+```
+
+Add **WEB_COLLAPSE** environment variable to the docker run command:
+```
+docker run ... -e WEB_COLLAPSE=false ...
+```
+
 ### How to change default theme
 ```
 sudo vi /usr/sbin/mercurial
