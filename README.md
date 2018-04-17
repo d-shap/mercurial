@@ -137,7 +137,7 @@ PATH=/repopath/reponame
 sudo mutil backup <filename>
 ```
 
-The backup file **<filename>.tar.gz** contains **/mercurial/repositories** folder and **/mercurial/users** file.
+The backup file **&lt;filename&gt;.tar.gz** contains **/mercurial/repositories** folder and **/mercurial/users** file.
 
 ### Restore repository backup
 ```
