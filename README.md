@@ -109,10 +109,10 @@ sudo service mercurial (start|stop|status|restart)
 
 ### User management
 ```
-sudo mutil htpasswd [ -c ] [ -i ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username>
+sudo mutil htpasswd <arguments> passwdfile <username>
 ```
 ```
-sudo mutil htpasswd -b [ -c ] [ -m | -B | -d | -s | -p ] [ -C cost ] [ -D ] [ -v ] passwdfile <username> <password>
+sudo mutil htpasswd -b <arguments> passwdfile <username> <password>
 ```
 
 **htpasswd** command is passed to the running docker container with **mutil** utility.
