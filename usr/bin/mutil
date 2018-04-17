@@ -103,7 +103,7 @@ bash() {
         exit 1
     fi
 
-    docker exec -it "$CID" sh -c "cd /mercurial/repositories && /bin/bash"
+    docker exec -it "$CID" sh -c "cd /mercurial && /bin/bash"
     if [ $? -ne 0 ];
     then
         exit 2
