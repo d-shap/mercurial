@@ -139,18 +139,23 @@ PATH=/repopath/reponame
 sudo mutil backup
 ```
 
-Backups can be created with cron job:
-```
-sudo crontab -l | { cat; echo "10 2 * * * /usr/bin/mutil backup"; echo ""; } | sudo crontab -
-```
+The backup contains */mercurial/repositories* folder and */mercurial/users* file.
 
 ### Restore repository backup
 ```
-sudo mutil restore [replace]
+sudo mutil restore
 ```
 
-If **replace** argument is specified, then all repositories are deleted and then restored from backup.
-With this argument repositories can be irrevocably deleted.
+After backup is restored, you should restore file with passwords:
+```
+sudo service mercurial stop
+```
+```
+sudo mv /mercurial/repositories/users /mercurial
+```
+```
+sudo service mercurial start
+```
 
 ### Command line (bash)
 ```
@@ -220,3 +225,8 @@ Available themes are:
 * spartan
 * monoblue
 * gitweb
+
+### How to create cron job for backups
+```
+sudo crontab -l | { cat; echo "10 2 * * * /usr/bin/mutil backup"; echo ""; } | sudo crontab -
+```
