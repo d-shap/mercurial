@@ -149,7 +149,7 @@ After backup is restored, you should restore file with user passwords:
 sudo service mercurial stop
 ```
 ```
-sudo mv /mercurial/repositories/users /mercurial
+sudo mv /mercurial/repositories/users /mercurial/users
 ```
 ```
 sudo service mercurial start
