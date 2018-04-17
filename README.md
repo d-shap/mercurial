@@ -137,7 +137,7 @@ PATH=/repopath/reponame
 sudo mutil backup
 ```
 
-The backup contains */mercurial/repositories* folder and */mercurial/users* file.
+The backup contains **/mercurial/repositories** folder and **/mercurial/users** file.
 
 ### Restore repository backup
 ```
@@ -214,13 +214,13 @@ sudo mutil hg init PATH=/newrepopath/newreponame
 ```
 
 ### How to change repository description
-Edit *contact* and *description* fields in *hgrc* file:
+Edit **contact** and **description** fields in **hgrc** file:
 ```
 sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
 ### How to restrict access to repository
-Edit *allow_read* and *allow_push* fields in *hgrc* file:
+Edit **allow_read** and **allow_push** fields in **hgrc** file:
 ```
 sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
