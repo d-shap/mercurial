@@ -146,7 +146,7 @@ sudo crontab -l | { cat; echo "10 2 * * * /usr/bin/mutil backup"; echo ""; } | s
 
 ### Restore repository backup
 ```
-sudo mutil restore [ replace ]
+sudo mutil restore [replace]
 ```
 
 If **replace** argument is specified, then all repositories are deleted and then restored from backup.
