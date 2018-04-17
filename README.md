@@ -225,16 +225,6 @@ Edit **allow_read** and **allow_push** fields in **hgrc** file:
 sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
 ```
 
-### How to change title of web application
-```
-sudo vi /usr/sbin/mercurial
-```
-
-Add **WEB_DESCRIPTION** environment variable to the docker run command:
-```
-docker run ... -e WEB_DESCRIPTION="New description" ...
-```
-
 ### How to change default theme
 ```
 sudo vi /usr/sbin/mercurial
