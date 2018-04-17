@@ -211,7 +211,9 @@ sudo mutil htpasswd passwdfile <username>
 ```
 sudo mutil hg init PATH=/newreponame
 ```
-and new repository **/mercurial/repositories/newreponame** would be created.
+```
+sudo mutil hg init PATH=/newrepopath/newreponame
+```
 
 ### How to change default theme
 Add **WEB_STYLE** environment variable to the docker run command
