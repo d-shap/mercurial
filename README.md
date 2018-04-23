@@ -62,17 +62,17 @@ sudo chown mercurial:mercurial /var/log/mercurial
 sudo chown mercurial:mercurial /var/backups/mercurial
 ```
 
-Copy **etc/init.d/mercurial** to **/etc/init.d** folder:
+Copy **./etc/init.d/mercurial** to **/etc/init.d** folder:
 ```
 sudo cp ./etc/init.d/mercurial /etc/init.d
 ```
 
-Copy **usr/sbin/mercurial** to **/usr/sbin** folder:
+Copy **./usr/sbin/mercurial** to **/usr/sbin** folder:
 ```
 sudo cp ./usr/sbin/mercurial /usr/sbin
 ```
 
-Copy **usr/bin/mutil** to **/usr/bin** folder:
+Copy **./usr/bin/mutil** to **/usr/bin** folder:
 ```
 sudo cp ./usr/bin/mutil /usr/bin
 ```
@@ -96,6 +96,16 @@ sudo update-rc.d mercurial defaults
 Start mercurial service:
 ```
 sudo service mercurial start
+```
+
+Client configuration
+--------------------
+Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
+
+Specify user name and e-mail in this file:
+```
+[ui]
+username = First Last <email@example.com>
 ```
 
 Management
@@ -137,14 +147,14 @@ PATH=/repopath/reponame
 sudo mutil backup <filename>
 ```
 
-The backup file **&lt;filename&gt;.tar.gz** contains **/mercurial/repositories** folder and **/mercurial/users** file.
+Backup file **/var/backups/mercurial/&lt;filename&gt;.tar.gz** will be created.
 
 ### Restore repository backup
 ```
 sudo mutil restore <filename>
 ```
 
-After backup is restored, you should restore file with user passwords:
+After repositories backup is restored, file with user passwords should be restored:
 ```
 sudo service mercurial stop
 ```
