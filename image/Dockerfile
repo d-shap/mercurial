@@ -62,6 +62,8 @@ RUN         mv /tmp/hgrc /etc/mercurial && \
 # Configure helper scripts
 RUN         mv /tmp/startup /mercurial/scripts && \
             chmod a+x /mercurial/scripts/startup && \
+            mv /tmp/shutdown /mercurial/scripts && \
+            chmod a+x /mercurial/scripts/shutdown && \
             mv /tmp/createrepositoryhgrc /mercurial/scripts && \
             chmod a+x /mercurial/scripts/createrepositoryhgrc && \
             mv /tmp/backup /mercurial/scripts && \
