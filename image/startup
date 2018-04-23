@@ -8,4 +8,6 @@ then
     sed -i 's|collapse.*|collapse        = '"$WEB_COLLAPSE"'|' /mercurial/hgweb.config
 fi
 
+trap /mercurial/scripts/shutdown TERM
+
 /usr/sbin/apache2ctl -D FOREGROUND
