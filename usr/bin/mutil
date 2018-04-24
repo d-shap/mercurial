@@ -97,7 +97,6 @@ restore() {
 
 bash() {
     CID=$(cat "$PIDFILE")
-
     if [ "$CID" == "" ];
     then
         exit 1
