@@ -6,7 +6,7 @@ then
     if [ -e "$FILE" ];
     then
         cd /mercurial
-        tar -xzf $FILE --exclude='users'
+        tar -xzf $FILE repositories
         cd /mercurial/repositories
         tar -xzf $FILE users
     fi
