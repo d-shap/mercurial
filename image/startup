@@ -10,4 +10,4 @@ fi
 
 trap /mercurial/scripts/shutdown SIGHUP SIGINT SIGTERM TERM
 
-/usr/sbin/apache2ctl -D FOREGROUND & wait
+apache2ctl -D FOREGROUND & wait
