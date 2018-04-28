@@ -3,7 +3,7 @@ MAINTAINER  Dmitry Shapovalov
 
 ARG         hostuid=969
 ARG         hostgid=969
-ARG         guestport=8008
+ARG         guestport=8009
 ARG         guestappname=mercurial
 
 ENV         DEBIAN_FRONTEND noninteractive

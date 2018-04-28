@@ -8,5 +8,5 @@ docker run \
     -v /mercurial/users:/mercurial/users \
     -v /var/log/mercurial:/mercurial/logs \
     -v /var/backups/mercurial:/mercurial/backups \
-    -p 8008:8008 \
+    -p 8009:8009 \
         mercurial

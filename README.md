@@ -195,8 +195,8 @@ ProxyPreserveHost On
 
 ...
 
-ProxyPass /mercurial http://localhost:8008/mercurial
-ProxyPassReverse /mercurial http://localhost:8008/mercurial
+ProxyPass /mercurial http://localhost:8009/mercurial
+ProxyPassReverse /mercurial http://localhost:8009/mercurial
 
 ...
 
