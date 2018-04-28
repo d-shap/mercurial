@@ -1,8 +1,8 @@
 FROM        debian:jessie
 MAINTAINER  Dmitry Shapovalov
 
-ARG         hostuid=987
-ARG         hostgid=987
+ARG         hostuid=969
+ARG         hostgid=969
 ARG         guestport=8008
 ARG         guestappname=mercurial
 
