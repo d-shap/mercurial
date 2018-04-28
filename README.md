@@ -154,7 +154,7 @@ Backup file **/var/backups/mercurial/&lt;filename&gt;.tar.gz** will be created.
 sudo mutil restore <filename>
 ```
 
-After repositories backup is restored, file with user passwords should be restored:
+Restore file with user passwords:
 ```
 sudo service mercurial stop
 ```
@@ -224,23 +224,27 @@ sudo mutil hg init PATH=/newrepopath/newreponame
 ```
 
 ### How to change repository description
-Edit **contact** and **description** fields in **hgrc** file:
+Edit **contact** and **description** fields in **/mercurial/repositories/repopath/reponame/.hg/hgrc** file:
 ```
-sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
+[web]
+...
+contact         = Repository contact person
+description     = Repository description
+...
 ```
 
 ### How to restrict access to repository
-Edit **allow_read** and **allow_push** fields in **hgrc** file:
+Edit **allow_read** and **allow_push** fields in **/mercurial/repositories/repopath/reponame/.hg/hgrc** file:
 ```
-sudo vi /mercurial/repositories/repopath/reponame/.hg/hgrc
+[web]
+...
+allow_read      = *
+allow_push      = username
+...
 ```
 
 ### How to change default theme
-```
-sudo vi /usr/sbin/mercurial
-```
-
-Add **WEB_STYLE** environment variable to the docker run command:
+Specify **WEB_STYLE** environment variable in **/usr/sbin/mercurial** file:
 ```
 docker run ... -e WEB_STYLE="gitweb" ...
 ```
@@ -253,11 +257,7 @@ Available themes are:
 * gitweb
 
 ### How to disable multi-level directory hierarchy
-```
-sudo vi /usr/sbin/mercurial
-```
-
-Add **WEB_COLLAPSE** environment variable to the docker run command:
+Specify **WEB_COLLAPSE** environment variable in **/usr/sbin/mercurial** file:
 ```
 docker run ... -e WEB_COLLAPSE="false" ...
 ```
