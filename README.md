@@ -105,7 +105,7 @@ Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Wi
 Specify user name and e-mail in this file:
 ```
 [ui]
-username = First Last <email@example.com>
+username = First Last <e-mail@example.com>
 ```
 
 Management
