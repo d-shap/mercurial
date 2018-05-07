@@ -7,8 +7,11 @@ ARG         guestport=8009
 ARG         guestappname=mercurial
 
 ENV         DEBIAN_FRONTEND noninteractive
-ENV         APACHE_RUN_USER mercurial
-ENV         APACHE_RUN_GROUP mercurial
+ENV         RUN_USER mercurial
+ENV         RUN_GROUP mercurial
+ENV         APACHE_RUN_USER $RUN_USER
+ENV         APACHE_RUN_GROUP $RUN_GROUP
+ENV         GUEST_PORT $guestport
 ENV         GUEST_APP_NAME $guestappname
 
 COPY        . /tmp
@@ -23,8 +26,8 @@ RUN         apt-get update && \
             apt-get clean
 
 # Create user and group
-RUN         groupadd -g $hostgid mercurial && \
-            useradd -u $hostuid -g $hostgid -M mercurial
+RUN         groupadd -g $hostgid $RUN_GROUP && \
+            useradd -u $hostuid -g $hostgid -M $RUN_USER
 
 # Create files and folders for mercurial
 RUN         mkdir /mercurial && \
@@ -33,29 +36,29 @@ RUN         mkdir /mercurial && \
             touch /mercurial/users && \
             mkdir /mercurial/logs && \
             mkdir /mercurial/backups && \
-            chown -R mercurial:mercurial /mercurial
+            chown -R $RUN_USER:$RUN_GROUP /mercurial
 
 # Configure apache
-RUN         sed -i 's|:80>|:'"$guestport"'>|' /etc/apache2/sites-available/000-default.conf && \
+RUN         sed -i 's|:80>|:'"$GUEST_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
             mv /tmp/mercurial.conf /etc/apache2/sites-available && \
-            sed -i 's|/guestappname|/'"$guestappname"'|' /etc/apache2/sites-available/mercurial.conf && \
-            sed -i 's|Listen 80|Listen '"$guestport"'|' /etc/apache2/ports.conf && \
+            sed -i 's|/guestappname|/'"$GUEST_APP_NAME"'|' /etc/apache2/sites-available/mercurial.conf && \
+            sed -i 's|Listen 80|Listen '"$GUEST_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
             a2enmod cgi && \
             a2ensite mercurial && \
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
-            chown -R mercurial:mercurial /var/log/apache2 && \
-            chown -R mercurial:mercurial /var/lock/apache2 && \
-            chown -R mercurial:mercurial /var/run/apache2
+            chown -R $RUN_USER:$RUN_GROUP /var/log/apache2 && \
+            chown -R $RUN_USER:$RUN_GROUP /var/lock/apache2 && \
+            chown -R $RUN_USER:$RUN_GROUP /var/run/apache2
 
 # Configure mercurial
 RUN         mv /tmp/hgrc /etc/mercurial && \
-            sed -i 's|/guestappname|/'"$guestappname"'|' /etc/mercurial/hgrc && \
+            sed -i 's|/guestappname|/'"$GUEST_APP_NAME"'|' /etc/mercurial/hgrc && \
             mv /tmp/hgweb.config /mercurial && \
-            chown mercurial:mercurial /mercurial/hgweb.config && \
+            chown $RUN_USER:$RUN_GROUP /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
             chmod a+x /mercurial/hgweb.cgi
 
@@ -71,8 +74,8 @@ RUN         mv /tmp/startup /mercurial/scripts && \
             mv /tmp/restore /mercurial/scripts && \
             chmod a+x /mercurial/scripts/restore
 
-USER        mercurial
+USER        $RUN_USER
 
-EXPOSE      $guestport
+EXPOSE      $GUEST_PORT
 
 ENTRYPOINT  ["/mercurial/scripts/startup"]
