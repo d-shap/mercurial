@@ -9,10 +9,10 @@ ARG         guestappname=mercurial
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         RUN_USER mercurial
 ENV         RUN_GROUP mercurial
-ENV         APACHE_RUN_USER $RUN_USER
-ENV         APACHE_RUN_GROUP $RUN_GROUP
 ENV         GUEST_PORT $guestport
 ENV         GUEST_APP_NAME $guestappname
+ENV         APACHE_RUN_USER $RUN_USER
+ENV         APACHE_RUN_GROUP $RUN_GROUP
 
 COPY        . /tmp
 
