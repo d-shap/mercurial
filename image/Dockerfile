@@ -51,7 +51,9 @@ RUN         sed -i 's|:80>|:'"$GUEST_PORT"'>|' /etc/apache2/sites-available/000-
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
             chown -h $RUN_USER:$RUN_GROUP /var/log/apache2 && \
+            mkdir -p /var/lock/apache2 && \
             chown -R $RUN_USER:$RUN_GROUP /var/lock/apache2 && \
+            mkdir -p /var/run/apache2 && \
             chown -R $RUN_USER:$RUN_GROUP /var/run/apache2
 
 # Configure mercurial
