@@ -11,7 +11,7 @@ deny_push       = *
 allow_push      =
 cache           = true
 encoding        = UTF-8
-prefix          = /guestappname
+prefix          = /mercurial
 templates       = /usr/share/mercurial/templates
 
 [ui]

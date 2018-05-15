@@ -3,13 +3,11 @@ MAINTAINER  Dmitry Shapovalov
 
 ARG         hostuid=969
 ARG         hostgid=969
-ARG         guestappname=mercurial
 
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         RUN_USER mercurial
 ENV         RUN_GROUP mercurial
 ENV         GUEST_PORT 8009
-ENV         GUEST_APP_NAME $guestappname
 ENV         APACHE_RUN_USER $RUN_USER
 ENV         APACHE_RUN_GROUP $RUN_GROUP
 
@@ -41,7 +39,6 @@ RUN         mkdir /mercurial && \
 RUN         sed -i 's|:80>|:'"$GUEST_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
             mv /tmp/mercurial.conf /etc/apache2/sites-available && \
-            sed -i 's|/guestappname|/'"$GUEST_APP_NAME"'|' /etc/apache2/sites-available/mercurial.conf && \
             sed -i 's|Listen 80|Listen '"$GUEST_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
@@ -57,7 +54,6 @@ RUN         sed -i 's|:80>|:'"$GUEST_PORT"'>|' /etc/apache2/sites-available/000-
 
 # Configure mercurial
 RUN         mv /tmp/hgrc /etc/mercurial && \
-            sed -i 's|/guestappname|/'"$GUEST_APP_NAME"'|' /etc/mercurial/hgrc && \
             mv /tmp/hgweb.config /mercurial && \
             chown $RUN_USER:$RUN_GROUP /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
