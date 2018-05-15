@@ -3,13 +3,12 @@ MAINTAINER  Dmitry Shapovalov
 
 ARG         hostuid=969
 ARG         hostgid=969
-ARG         guestport=8009
 ARG         guestappname=mercurial
 
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         RUN_USER mercurial
 ENV         RUN_GROUP mercurial
-ENV         GUEST_PORT $guestport
+ENV         GUEST_PORT 8009
 ENV         GUEST_APP_NAME $guestappname
 ENV         APACHE_RUN_USER $RUN_USER
 ENV         APACHE_RUN_GROUP $RUN_GROUP
