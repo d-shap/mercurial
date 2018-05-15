@@ -7,7 +7,7 @@ ARG         hostgid=969
 ENV         DEBIAN_FRONTEND noninteractive
 ENV         RUN_USER mercurial
 ENV         RUN_GROUP mercurial
-ENV         GUEST_PORT 8009
+ENV         RUN_PORT 8009
 ENV         APACHE_RUN_USER $RUN_USER
 ENV         APACHE_RUN_GROUP $RUN_GROUP
 
@@ -36,10 +36,10 @@ RUN         mkdir /mercurial && \
             chown -R $RUN_USER:$RUN_GROUP /mercurial
 
 # Configure apache
-RUN         sed -i 's|:80>|:'"$GUEST_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
+RUN         sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
             mv /tmp/mercurial.conf /etc/apache2/sites-available && \
-            sed -i 's|Listen 80|Listen '"$GUEST_PORT"'|' /etc/apache2/ports.conf && \
+            sed -i 's|Listen 80|Listen '"$RUN_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
             a2enmod cgi && \
@@ -73,6 +73,6 @@ RUN         mv /tmp/startup /mercurial/scripts && \
 
 USER        $RUN_USER
 
-EXPOSE      $GUEST_PORT
+EXPOSE      $RUN_PORT
 
 ENTRYPOINT  ["/mercurial/scripts/startup"]
