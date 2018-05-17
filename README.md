@@ -195,12 +195,17 @@ ProxyPreserveHost On
 
 ...
 
-ProxyPass /mercurial http://localhost:8009/mercurial
-ProxyPassReverse /mercurial http://localhost:8009/mercurial
-
-...
-
 </VirtualHost>
+```
+
+Copy **./etc/apache2/sites-available/mercurial.conf** to **/etc/apache2/sites-available** folder:
+```
+sudo cp ./etc/apache2/sites-available/mercurial.conf /etc/apache2/sites-available
+```
+
+Then enable apache site:
+```
+a2ensite mercurial
 ```
 
 Finally, restart apache service:
