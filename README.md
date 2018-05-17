@@ -205,7 +205,7 @@ sudo cp ./etc/apache2/sites-available/mercurial.conf /etc/apache2/sites-availabl
 
 Then enable apache site:
 ```
-a2ensite mercurial
+sudo a2ensite mercurial
 ```
 
 Finally, restart apache service:
