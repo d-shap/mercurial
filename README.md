@@ -13,6 +13,20 @@ To run container next volumes should be mapped:
 
 Installation
 ------------
+### Installation from docker image
+Pull docker image.
+
+Create user and group to own mercurial repositories and to run docker container:
+```
+sudo groupadd -g 969 mercurial
+```
+```
+useradd -u 969 -g 969 -M mercurial
+```
+
+### Installation from source
+Pull project sources from version control system.
+
 Create user and group to own mercurial repositories and to run docker container:
 ```
 sudo useradd -r mercurial
@@ -28,6 +42,7 @@ Execute **build**:
 sudo ./build mercurial
 ```
 
+### Configuration
 Create folders for mercurial repository:
 ```
 sudo mkdir /mercurial
