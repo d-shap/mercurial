@@ -24,6 +24,8 @@ sudo groupadd -g 969 mercurial
 useradd -u 969 -g 969 -M mercurial
 ```
 
+Proceed to configuration.
+
 ### Installation from source
 Pull project sources from version control system.
 
@@ -41,6 +43,8 @@ Execute **build**:
 ```
 sudo ./build mercurial
 ```
+
+Proceed to configuration.
 
 ### Configuration
 Create folders for mercurial repository:
