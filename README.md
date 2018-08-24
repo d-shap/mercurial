@@ -293,4 +293,4 @@ sudo crontab -l | { cat; echo "minute hour * * * /usr/bin/mutil backup <filename
 
 Donation
 ========
-If you find my code useful, you can [![bye me a coffee](donation.png)](https://www.paypal.me/dshapovalov)
+If you find my code useful, you can [bye me a coffee](https://www.paypal.me/dshapovalov)
