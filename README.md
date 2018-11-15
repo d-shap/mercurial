@@ -1,5 +1,4 @@
-Mercurial web server
-====================
+# Mercurial web server
 Docker image for mercurial web server.
 
 Container runs as non-root user.
@@ -11,8 +10,7 @@ To run container next volumes should be mapped:
 * log folder
 * backups folder
 
-Installation
-------------
+## Installation
 ### Installation from docker image
 Pull docker image.
 
@@ -117,8 +115,7 @@ Start mercurial service:
 sudo service mercurial start
 ```
 
-Client configuration
---------------------
+## Client configuration
 Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
 
 Specify user name and e-mail in this file:
@@ -127,8 +124,7 @@ Specify user name and e-mail in this file:
 username = First Last <e-mail@example.com>
 ```
 
-Management
-----------
+## Management
 ### Service management
 ```
 sudo service mercurial (start|stop|status|restart)
@@ -189,8 +185,7 @@ sudo service mercurial start
 sudo mutil bash
 ```
 
-Apache mod_proxy configuration
-------------------------------
+## Apache mod_proxy configuration
 Mercurial web server can be located with another web applications.
 For example, mercurial, bugzilla, wiki etc can be run as docker containers on the same host.
 In this case apache server can be used to redirect requests to different docker containers.
@@ -232,8 +227,7 @@ Restart apache service:
 sudo service apache2 restart
 ```
 
-HOW TO
-------
+## HOW TO
 ### How to create a new user
 ```
 sudo mutil htpasswd passwdfile <username>
@@ -291,6 +285,5 @@ docker run ... -e WEB_COLLAPSE="false" ...
 sudo crontab -l | { cat; echo "minute hour * * * /usr/bin/mutil backup <filename>"; echo ""; } | sudo crontab -
 ```
 
-Donation
-========
+# Donation
 If you find my code useful, you can [bye me a coffee](https://www.paypal.me/dshapovalov)
