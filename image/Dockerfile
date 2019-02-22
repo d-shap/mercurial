@@ -54,8 +54,9 @@ RUN         sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-de
 
 # Configure mercurial
 RUN         mv /tmp/hgrc /etc/mercurial && \
+            chmod 644 /etc/mercurial/hgrc && \
             mv /tmp/hgweb.config /mercurial && \
-            chown $RUN_USER:$RUN_GROUP /mercurial/hgweb.config && \
+            chmod 644 /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
             chmod 755 /mercurial/hgweb.cgi
 
