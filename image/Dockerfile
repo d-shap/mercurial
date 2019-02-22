@@ -57,7 +57,7 @@ RUN         mv /tmp/hgrc /etc/mercurial && \
             mv /tmp/hgweb.config /mercurial && \
             chown $RUN_USER:$RUN_GROUP /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
-            chmod a+x /mercurial/hgweb.cgi
+            chmod 755 /mercurial/hgweb.cgi
 
 # Configure helper scripts
 RUN         mv /tmp/startup /mercurial/scripts && \
@@ -65,7 +65,7 @@ RUN         mv /tmp/startup /mercurial/scripts && \
             mv /tmp/createrepositoryhgrc /mercurial/scripts && \
             mv /tmp/backup /mercurial/scripts && \
             mv /tmp/restore /mercurial/scripts && \
-            chmod a+x /mercurial/scripts/*
+            chmod 755 /mercurial/scripts/*
 
 USER        $RUN_USER
 
