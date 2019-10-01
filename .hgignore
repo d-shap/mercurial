@@ -1,3 +1,6 @@
 glob:*.iml
 glob:*~
-.idea
+
+.idea/inspectionProfiles
+.idea/modules.xml
+.idea/vcs.xml
