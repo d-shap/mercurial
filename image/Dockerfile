@@ -13,13 +13,18 @@ ENV         DEBIAN_FRONTEND=noninteractive \
 
 COPY        . /tmp
 
-# Install packages
+# Install common packages and configure environment
 RUN         apt-get update && \
             apt-get install --assume-yes \
-                apache2 \
-                mercurial \
-                tk \
-                vim && \
+                apt-utils \
+                build-essential \
+                software-properties-common \
+                unzip \
+                vim \
+                wget && \
+RUN         apt-get update && \
+            apt-get install --assume-yes \
+                tk && \
             apt-get clean
 
 # Create user and group
