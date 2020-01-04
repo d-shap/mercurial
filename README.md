@@ -53,11 +53,6 @@ sudo mkdir /mercurial
 sudo mkdir /mercurial/repositories
 ```
 
-Create file to store user passwords:
-```
-sudo touch /mercurial/users
-```
-
 Create folder for logs:
 ```
 sudo mkdir /var/log/mercurial
@@ -167,17 +162,6 @@ Backup file **/var/backups/mercurial/&lt;filename&gt;.tar.gz** will be created.
 ### Restore repository backup
 ```
 sudo mutil restore <filename>
-```
-
-Restore file with user passwords:
-```
-sudo service mercurial stop
-```
-```
-sudo mv /mercurial/repositories/users /mercurial/users
-```
-```
-sudo service mercurial start
 ```
 
 ### Command line (bash)
