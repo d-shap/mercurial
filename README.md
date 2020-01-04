@@ -44,70 +44,70 @@ To run container next volumes should be mapped:
 Proceed to configuration.
 
 ### Configuration
-Create folders for mercurial repository:
-```
-sudo mkdir /mercurial
-```
-```
-sudo mkdir /mercurial/repositories
-```
+1. Create folders for mercurial repository:
+    ```
+    sudo mkdir /mercurial
+    ```
+    ```
+    sudo mkdir /mercurial/repositories
+    ```
 
-Create folder for logs:
-```
-sudo mkdir /var/log/mercurial
-```
+2. Create folder for logs:
+    ```
+    sudo mkdir /var/log/mercurial
+    ```
 
-Create folder for backups:
-```
-sudo mkdir /var/backups/mercurial
-```
+3. Create folder for backups:
+    ```
+    sudo mkdir /var/backups/mercurial
+    ```
 
-Grant permit to all files and folders:
-```
-sudo chown -R mercurial:mercurial /mercurial
-```
-```
-sudo chown mercurial:mercurial /var/log/mercurial
-```
-```
-sudo chown mercurial:mercurial /var/backups/mercurial
-```
+4. Grant permit to all files and folders:
+    ```
+    sudo chown -R mercurial:mercurial /mercurial
+    ```
+    ```
+    sudo chown mercurial:mercurial /var/log/mercurial
+    ```
+    ```
+    sudo chown mercurial:mercurial /var/backups/mercurial
+    ```
 
-Copy **./etc/init.d/mercurial** to **/etc/init.d** folder:
-```
-sudo cp ./etc/init.d/mercurial /etc/init.d
-```
+5. Copy **./etc/init.d/mercurial** to **/etc/init.d** folder:
+    ```
+    sudo cp ./etc/init.d/mercurial /etc/init.d
+    ```
 
-Copy **./usr/sbin/mercurial** to **/usr/sbin** folder:
-```
-sudo cp ./usr/sbin/mercurial /usr/sbin
-```
+6. Copy **./usr/sbin/mercurial** to **/usr/sbin** folder:
+    ```
+    sudo cp ./usr/sbin/mercurial /usr/sbin
+    ```
 
-Copy **./usr/bin/mutil** to **/usr/bin** folder:
-```
-sudo cp ./usr/bin/mutil /usr/bin
-```
+7. Copy **./usr/bin/mutil** to **/usr/bin** folder:
+    ```
+    sudo cp ./usr/bin/mutil /usr/bin
+    ```
 
-Make all files executable:
-```
-sudo chmod a+x /etc/init.d/mercurial
-```
-```
-sudo chmod a+x /usr/sbin/mercurial
-```
-```
-sudo chmod a+x /usr/bin/mutil
-```
+8. Make all files executable:
+    ```
+    sudo chmod a+x /etc/init.d/mercurial
+    ```
+    ```
+    sudo chmod a+x /usr/sbin/mercurial
+    ```
+    ```
+    sudo chmod a+x /usr/bin/mutil
+    ```
 
-Register service:
-```
-sudo update-rc.d mercurial defaults
-```
+9. Register service:
+    ```
+    sudo update-rc.d mercurial defaults
+    ```
 
-Start mercurial service:
-```
-sudo service mercurial start
-```
+10. Start mercurial service:
+    ```
+    sudo service mercurial start
+    ```
 
 ## Client configuration
 Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
