@@ -158,42 +158,46 @@ Mercurial web server can be located with another web applications.
 For example, mercurial, bugzilla, wiki etc can be run as docker containers on the same host.
 In this case apache server can be used to redirect requests to different docker containers.
 
-Enable apache mod_proxy:
-```
-sudo a2enmod proxy proxy_ajp proxy_html proxy_http rewrite deflate headers proxy_balancer proxy_connect
-```
+1. Enable apache mod_proxy:
+    ```
+    sudo a2enmod proxy proxy_ajp proxy_html proxy_http rewrite deflate headers proxy_balancer proxy_connect
+    ```
 
-Configure proxy:
-```
-<VirtualHost *:80>
+2. Configure proxy:
+    ```
+    <VirtualHost *:80>
+        ...
+        ProxyPreserveHost On
+        <Proxy *>
+            Order allow,deny
+            Allow from all
+        </Proxy>
+        ...
+    </VirtualHost>
+    ```
 
-...
+3. Copy **./etc/apache2/sites-available/mercurial.conf** to **/etc/apache2/sites-available** folder:
+    ```
+    sudo cp ./etc/apache2/sites-available/mercurial.conf /etc/apache2/sites-available
+    ```
 
-ProxyPreserveHost On
-<Proxy *>
-    Order allow,deny
-    Allow from all
-</Proxy>
+4. Copy **./etc/apache2/sites-available/mpasstool.conf** to **/etc/apache2/sites-available** folder:
+    ```
+    sudo cp ./etc/apache2/sites-available/mpasstool.conf /etc/apache2/sites-available
+    ```
 
-...
+5. Enable apache mercurial site:
+    ```
+    sudo a2ensite mercurial
+    ```
+    ```
+    sudo a2ensite mpasstool
+    ```
 
-</VirtualHost>
-```
-
-Copy **./etc/apache2/sites-available/mercurial.conf** to **/etc/apache2/sites-available** folder:
-```
-sudo cp ./etc/apache2/sites-available/mercurial.conf /etc/apache2/sites-available
-```
-
-Enable apache mercurial site:
-```
-sudo a2ensite mercurial
-```
-
-Restart apache service:
-```
-sudo service apache2 restart
-```
+6. Restart apache service:
+    ```
+    sudo service apache2 restart
+    ```
 
 ## HOW TO
 ### How to create a new user
