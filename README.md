@@ -110,34 +110,19 @@ Proceed to configuration.
     ```
 
 ## Client configuration
-Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
+1. Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
 
-Specify user name and e-mail in this file:
-```
-[ui]
-username = First Last <e-mail@example.com>
-```
+2. Specify user name and e-mail in this file:
+    ```
+    [ui]
+    username = First Last <e-mail@example.com>
+    ```
 
 ## Management
 ### Service management
 ```
 sudo service mercurial (start|stop|status|restart)
 ```
-
-### User management
-```
-sudo mutil htpasswd <arguments> passwdfile <username>
-```
-```
-sudo mutil htpasswd -b <arguments> passwdfile <username> <password>
-```
-
-**htpasswd** command is passed to the running docker container with **mutil** utility.
-
-**username** and **password** should be replaced with real values.
-
-**passwdfile** should be spelled literally.
-
 
 ### Repository management
 ```
