@@ -8,7 +8,7 @@ htpasswd() {
     do
         if [ "${arguments[i]}" == "passwdfile" ];
         then
-            arguments[$i]="/mercurial/users"
+            arguments[$i]="/mercurial/repositories/.htpasswd"
         fi
     done
 
