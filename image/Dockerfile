@@ -31,11 +31,10 @@ RUN         apt-get update && \
 RUN         groupadd -g $hostgid $RUN_GROUP && \
             useradd -u $hostuid -g $hostgid -M $RUN_USER
 
-# Create files and folders for mercurial
+# Configure application folders
 RUN         mkdir /mercurial && \
             mkdir /mercurial/repositories && \
             mkdir /mercurial/scripts && \
-            touch /mercurial/users && \
             mkdir /mercurial/logs && \
             mkdir /mercurial/backups && \
             chown -R $RUN_USER:$RUN_GROUP /mercurial
