@@ -4,12 +4,12 @@ MAINTAINER  Dmitry Shapovalov
 ARG         hostuid=969
 ARG         hostgid=969
 
-ENV         DEBIAN_FRONTEND noninteractive
-ENV         RUN_USER mercurial
-ENV         RUN_GROUP mercurial
-ENV         RUN_PORT 8009
-ENV         APACHE_RUN_USER $RUN_USER
-ENV         APACHE_RUN_GROUP $RUN_GROUP
+ENV         DEBIAN_FRONTEND=noninteractive \
+            RUN_USER=mercurial \
+            RUN_GROUP=mercurial \
+            RUN_PORT=8009 \
+            APACHE_RUN_USER=$RUN_USER \
+            APACHE_RUN_GROUP=$RUN_GROUP
 
 COPY        . /tmp
 
