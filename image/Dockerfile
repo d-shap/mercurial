@@ -39,14 +39,18 @@ RUN         mkdir /mercurial && \
             mkdir /mercurial/backups && \
             chown -R $RUN_USER:$RUN_GROUP /mercurial
 
-# Configure apache
-RUN         sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
+# Install Apache
+RUN         apt-get update && \
+            apt-get install --assume-yes \
+                apache2 && \
+            apt-get clean && \
+            sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
             mv /tmp/mercurial.conf /etc/apache2/sites-available && \
             sed -i 's|Listen 80|Listen '"$RUN_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
-            a2enmod cgi && \
+            a2enmod cgi expires headers rewrite && \
             a2ensite mercurial && \
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
