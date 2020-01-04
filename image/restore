@@ -7,7 +7,5 @@ then
     then
         cd /mercurial
         tar -xzf $FILE repositories
-        cd /mercurial/repositories
-        tar -xzf $FILE users
     fi
 fi

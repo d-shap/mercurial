@@ -5,6 +5,6 @@ then
     FILE="/mercurial/backups/$1.tar.gz"
 
     cd /mercurial
-    tar -czf $TEMPTILE repositories users
+    tar -czf $TEMPTILE repositories
     mv $TEMPTILE $FILE
 fi
