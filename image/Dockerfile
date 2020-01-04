@@ -24,6 +24,7 @@ RUN         apt-get update && \
                 wget && \
             apt-get update && \
             apt-get install --assume-yes \
+                php \
                 tk && \
             apt-get clean
 
@@ -42,6 +43,7 @@ RUN         mkdir /mercurial && \
 # Install Apache
 RUN         apt-get update && \
             apt-get install --assume-yes \
+                libapache2-mod-php \
                 apache2 && \
             apt-get clean && \
             sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
@@ -50,7 +52,7 @@ RUN         apt-get update && \
             sed -i 's|Listen 80|Listen '"$RUN_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
-            a2enmod cgi expires headers rewrite && \
+            a2enmod cgi expires headers mpm_prefork php7.0 rewrite && \
             a2ensite mercurial && \
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
@@ -75,7 +77,8 @@ RUN         apt-get update && \
             rm /tmp/htpasstool-v1.04.tgz && \
             mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool && \
             touch /mercurial/repositories/.htpasswd && \
-            ln -s /mercurial/repositories/.htpasswd /var/www/html/mpasstool/.htpasswd
+            ln -s /mercurial/repositories/.htpasswd /var/www/html/mpasstool/.htpasswd && \
+            chown -R -h $RUN_USER:$RUN_GROUP /var/www/html
 
 # Configure helper scripts
 RUN         mv /tmp/startup /mercurial/scripts && \
