@@ -78,6 +78,10 @@ RUN         apt-get update && \
             mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool && \
             touch /mercurial/repositories/.htpasswd && \
             ln -s /mercurial/repositories/.htpasswd /var/www/html/mpasstool/.htpasswd && \
+            echo "AuthType Basic" >> /var/www/html/mpasstool/.htaccess && \
+            echo "AuthName \"Restricted Area\"" >> /var/www/html/mpasstool/.htaccess && \
+            echo "AuthUserFile \"/var/www/html/mpasstool/.htpasswd\"" >> /var/www/html/mpasstool/.htaccess && \
+            echo "require valid-user" >> /var/www/html/mpasstool/.htaccess && \
             chown -R -h $RUN_USER:$RUN_GROUP /var/www/html
 
 # Configure helper scripts
