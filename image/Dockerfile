@@ -60,8 +60,12 @@ RUN         apt-get update && \
             mkdir -p /var/run/apache2 && \
             chown -R $RUN_USER:$RUN_GROUP /var/run/apache2
 
-# Configure mercurial
-RUN         mv /tmp/hgrc /etc/mercurial && \
+# Configure app
+RUN         apt-get update && \
+            apt-get install --assume-yes \
+                mercurial && \
+            apt-get clean && \
+            mv /tmp/hgrc /etc/mercurial && \
             chmod 644 /etc/mercurial/hgrc && \
             mv /tmp/hgweb.config /mercurial && \
             chmod 644 /mercurial/hgweb.config && \
