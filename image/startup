@@ -12,4 +12,5 @@ touch /mercurial/repositories/.htpasswd
 
 trap /mercurial/scripts/shutdown SIGHUP SIGINT SIGTERM TERM
 
-apache2ctl -D FOREGROUND & wait
+startApacheCmd="apache2ctl -D FOREGROUND"
+$startApacheCmd & wait
