@@ -73,7 +73,9 @@ RUN         apt-get update && \
             chmod 755 /mercurial/hgweb.cgi && \
             tar xzf /tmp/htpasstool-v1.04.tgz -C /var/www/html && \
             rm /tmp/htpasstool-v1.04.tgz && \
-            mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool
+            mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool && \
+            touch /mercurial/repositories/.htpasswd && \
+            ln -s /mercurial/repositories/.htpasswd /var/www/html/mpasstool/.htpasswd
 
 # Configure helper scripts
 RUN         mv /tmp/startup /mercurial/scripts && \
