@@ -6,41 +6,40 @@ This user owns mercurial process and owns mercurial repositories.
 
 To run container next volumes should be mapped:
 * repository root folder
-* htpasswd file to store hashes of user passwords
 * log folder
 * backups folder
 
 ## Installation
 ### Installation from docker image
-Pull docker image.
+1. Pull docker image.
 
-Create user and group to own mercurial repositories and to run docker container:
-```
-sudo groupadd -g 969 mercurial
-```
-```
-useradd -u 969 -g 969 -M mercurial
-```
+2. Create user and group to own mercurial repositories and to run docker container:
+    ```
+    sudo groupadd -g 969 mercurial
+    ```
+    ```
+    useradd -u 969 -g 969 -M mercurial
+    ```
 
-Proceed to configuration.
+3. Proceed to configuration.
 
 ### Installation from source
-Pull project sources from version control system.
+1. Pull project sources from version control system.
 
-Create user and group to own mercurial repositories and to run docker container:
-```
-sudo useradd -r mercurial
-```
+2. Create user and group to own mercurial repositories and to run docker container:
+    ```
+    sudo useradd -r mercurial
+    ```
 
-Make **build** executable:
-```
-sudo chmod u+x ./build
-```
+3. Make **build** executable:
+    ```
+    sudo chmod u+x ./build
+    ```
 
-Execute **build**:
-```
-sudo ./build mercurial
-```
+4. Execute **build**:
+    ```
+    sudo ./build mercurial
+    ```
 
 Proceed to configuration.
 
