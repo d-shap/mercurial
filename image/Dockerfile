@@ -22,7 +22,7 @@ RUN         apt-get update && \
                 unzip \
                 vim \
                 wget && \
-RUN         apt-get update && \
+            apt-get update && \
             apt-get install --assume-yes \
                 tk && \
             apt-get clean
