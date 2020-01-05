@@ -197,11 +197,6 @@ In this case apache server can be used to redirect requests to different docker 
     ```
 
 ## HOW TO
-### How to create a new user
-```
-sudo mutil htpasswd passwdfile <username>
-```
-
 ### How to create a new repository
 ```
 sudo mutil hg init PATH=/newreponame
