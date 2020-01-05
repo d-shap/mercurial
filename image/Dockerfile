@@ -49,11 +49,13 @@ RUN         apt-get update && \
             sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
             mv /tmp/mercurial.conf /etc/apache2/sites-available && \
+            mv /tmp/mpasstool.conf /etc/apache2/sites-available && \
             sed -i 's|Listen 80|Listen '"$RUN_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
             a2enmod cgi expires headers mpm_prefork php7.0 rewrite && \
             a2ensite mercurial && \
+            a2ensite mpasstool && \
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
             chown -h $RUN_USER:$RUN_GROUP /var/log/apache2 && \
