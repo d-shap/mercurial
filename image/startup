@@ -8,7 +8,11 @@ then
     sed -i 's|collapse.*|collapse        = '"$WEB_COLLAPSE"'|' /mercurial/hgweb.config
 fi
 
-touch /mercurial/repositories/.htpasswd
+if [ ! -d /mercurial/repositories/users ];
+then
+    cp /mercurial/users /mercurial/repositories
+    chmod 644 /mercurial/repositories/users
+fi
 
 trap /mercurial/scripts/shutdown SIGHUP SIGINT SIGTERM TERM
 
