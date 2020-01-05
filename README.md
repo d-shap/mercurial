@@ -188,10 +188,7 @@ In this case apache server can be used to redirect requests to different docker 
 
 5. Enable apache mercurial site:
     ```
-    sudo a2ensite mercurial
-    ```
-    ```
-    sudo a2ensite mpasstool
+    sudo a2ensite mercurial mpasstool
     ```
 
 6. Restart apache service:
