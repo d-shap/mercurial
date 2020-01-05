@@ -186,7 +186,7 @@ In this case apache server can be used to redirect requests to different docker 
     sudo cp ./etc/apache2/sites-available/mpasstool.conf /etc/apache2/sites-available
     ```
 
-5. Enable apache mercurial site:
+5. Enable apache mercurial sites:
     ```
     sudo a2ensite mercurial mpasstool
     ```
