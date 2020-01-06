@@ -53,7 +53,7 @@ RUN         apt-get update && \
             sed -i 's|Listen 80|Listen '"$RUN_PORT"'|' /etc/apache2/ports.conf && \
             echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf && \
             a2enconf servername && \
-            a2enmod cgi expires headers mpm_prefork php7.0 rewrite && \
+            a2enmod cgi expires headers mpm_prefork php7.3 rewrite && \
             a2ensite mercurial mpasstool && \
             rm -rf /var/log/apache2 && \
             ln -s /mercurial/logs /var/log/apache2 && \
