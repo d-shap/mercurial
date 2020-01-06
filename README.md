@@ -124,6 +124,11 @@ Proceed to configuration.
 sudo service mercurial (start|stop|status|restart)
 ```
 
+### User management
+Users are managed with the **mpasstool** web interface.
+The default login/password is **admin**/**password**.
+
+
 ### Repository management
 ```
 sudo mutil hg <command> <arguments>
