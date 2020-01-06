@@ -1,4 +1,4 @@
-FROM        debian:stretch
+FROM        debian:buster
 MAINTAINER  Dmitry Shapovalov
 
 ARG         hostuid=969
