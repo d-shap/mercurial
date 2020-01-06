@@ -8,7 +8,7 @@ then
     sed -i 's|collapse.*|collapse        = '"$WEB_COLLAPSE"'|' /mercurial/hgweb.config
 fi
 
-if [ ! -d /mercurial/repositories/users ];
+if [ ! -f /mercurial/repositories/users ];
 then
     cp /mercurial/users /mercurial/repositories
     chmod 644 /mercurial/repositories/users
