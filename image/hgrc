@@ -1,32 +1,37 @@
 [server]
-bundle1         = false
-bundle1gd       = false
-validate        = true
+bundle1                 = false
+bundle1gd               = false
+bundle1.push            = false
+bundle1gd.push          = false
+bundle1.pull            = false
+bundle1gd.pull          = false
+concurrent-push-mode    = strict
+validate                = true
 
 [web]
-deny_read       = *
-allow_read      =
-allowpull       = false
-deny_push       = *
-allow_push      =
-cache           = true
-encoding        = UTF-8
-prefix          = /mercurial
-templates       = /usr/share/mercurial/templates
+deny_read               = *
+allow_read              =
+allowpull               = false
+deny_push               = *
+allow_push              =
+cache                   = true
+encoding                = UTF-8
+prefix                  = /mercurial
+templates               = /usr/share/mercurial/templates
 
 [ui]
-verbose         = false
+verbose                 = false
 
 [trusted]
-users           = mercurial
+users                   = mercurial
 
 [extensions]
-graphlog        =
-hgext.bookmarks =
-hgk             =
-histedit        =
-progress        =
-purge           =
-rebase          =
-shelve          =
-strip           =
+graphlog                =
+hgext.bookmarks         =
+hgk                     =
+histedit                =
+progress                =
+purge                   =
+rebase                  =
+shelve                  =
+strip                   =
