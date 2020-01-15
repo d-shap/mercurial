@@ -7,7 +7,7 @@ This user owns mercurial process and owns mercurial files.
 To run container next volumes should be mapped:
 * folder for mercurial files
 * log folder
-* backup folder
+* backups folder
 
 ## Installation
 ### Installation from docker image
