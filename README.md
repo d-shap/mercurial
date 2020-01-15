@@ -44,7 +44,7 @@ To run container next volumes should be mapped:
 Proceed to configuration.
 
 ### Configuration
-1. Create folders for mercurial repository:
+1. Create folders for mercurial files:
     ```
     sudo mkdir /mercurial
     ```
