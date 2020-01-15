@@ -2,18 +2,18 @@
 Docker image for mercurial web server.
 
 Container runs as non-root user.
-This user owns mercurial process and owns mercurial repositories.
+This user owns mercurial process and owns mercurial files.
 
 To run container next volumes should be mapped:
-* repository root folder
+* folder for mercurial files
 * log folder
-* backups folder
+* backup folder
 
 ## Installation
 ### Installation from docker image
 1. Pull docker image.
 
-2. Create user and group to own mercurial repositories and to run docker container:
+2. Create user and group to own mercurial files and to run docker container:
     ```
     sudo groupadd -g 969 mercurial
     ```
@@ -26,7 +26,7 @@ To run container next volumes should be mapped:
 ### Installation from source
 1. Pull project sources from version control system.
 
-2. Create user and group to own mercurial repositories and to run docker container:
+2. Create user and group to own mercurial files and to run docker container:
     ```
     sudo useradd -r mercurial
     ```
