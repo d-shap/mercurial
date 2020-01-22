@@ -141,14 +141,14 @@ If command needs a path to the repository, this path is specified like this:
 PATH=/repopath/reponame
 ```
 
-### Create repository backup
+### Create backup
 ```
 sudo mutil backup <filename>
 ```
 
 Backup file **/var/backups/mercurial/&lt;filename&gt;.tar.gz** will be created.
 
-### Restore repository backup
+### Restore backup
 ```
 sudo mutil restore <filename>
 ```
@@ -165,7 +165,7 @@ In this case apache server can be used to redirect requests to different docker 
 
 1. Enable apache mod_proxy:
     ```
-    sudo a2enmod proxy proxy_ajp proxy_html proxy_http rewrite deflate headers proxy_balancer proxy_connect
+    sudo a2enmod deflate headers proxy proxy_ajp proxy_balancer proxy_connect proxy_html proxy_http rewrite
     ```
 
 2. Configure proxy:
@@ -191,7 +191,7 @@ In this case apache server can be used to redirect requests to different docker 
     sudo cp ./etc/apache2/sites-available/mpasstool.conf /etc/apache2/sites-available
     ```
 
-5. Enable apache mercurial sites:
+5. Enable apache sites:
     ```
     sudo a2ensite mercurial mpasstool
     ```
