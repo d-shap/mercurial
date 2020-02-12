@@ -12,7 +12,6 @@ To run container next volumes should be mapped:
 ## Installation
 ### Installation from docker image
 1. Pull docker image.
-
 2. Create user and group to own mercurial files and to run docker container:
     ```
     sudo groupadd -g 969 mercurial
@@ -20,28 +19,23 @@ To run container next volumes should be mapped:
     ```
     useradd -u 969 -g 969 -M mercurial
     ```
-
 3. Proceed to configuration.
 
 ### Installation from source
 1. Pull project sources from version control system.
-
 2. Create user and group to own mercurial files and to run docker container:
     ```
     sudo useradd -r mercurial
     ```
-
 3. Make **build** executable:
     ```
     sudo chmod u+x ./build
     ```
-
 4. Execute **build**:
     ```
     sudo ./build mercurial
     ```
-
-Proceed to configuration.
+5. Proceed to configuration.
 
 ### Configuration
 1. Create folders for mercurial files:
@@ -51,17 +45,14 @@ Proceed to configuration.
     ```
     sudo mkdir /mercurial/repositories
     ```
-
 2. Create folder for logs:
     ```
     sudo mkdir /var/log/mercurial
     ```
-
 3. Create folder for backups:
     ```
     sudo mkdir /var/backups/mercurial
     ```
-
 4. Grant permit to all files and folders:
     ```
     sudo chown -R mercurial:mercurial /mercurial
@@ -72,22 +63,18 @@ Proceed to configuration.
     ```
     sudo chown mercurial:mercurial /var/backups/mercurial
     ```
-
 5. Copy **./etc/init.d/mercurial** to **/etc/init.d** folder:
     ```
     sudo cp ./etc/init.d/mercurial /etc/init.d
     ```
-
 6. Copy **./usr/sbin/mercurial** to **/usr/sbin** folder:
     ```
     sudo cp ./usr/sbin/mercurial /usr/sbin
     ```
-
 7. Copy **./usr/bin/mutil** to **/usr/bin** folder:
     ```
     sudo cp ./usr/bin/mutil /usr/bin
     ```
-
 8. Make all files executable:
     ```
     sudo chmod a+x /etc/init.d/mercurial
@@ -98,12 +85,10 @@ Proceed to configuration.
     ```
     sudo chmod a+x /usr/bin/mutil
     ```
-
 9. Register service:
     ```
     sudo update-rc.d mercurial defaults
     ```
-
 10. Start mercurial service:
     ```
     sudo service mercurial start
@@ -111,7 +96,6 @@ Proceed to configuration.
 
 ## Client configuration
 1. Create file **~/.hgrc** (Linux) or **%systemdrive%%homepath%\mercurial.ini** (Windows).
-
 2. Specify user name and e-mail in this file:
     ```
     [ui]
@@ -167,7 +151,6 @@ In this case apache server can be used to redirect requests to different docker 
     ```
     sudo a2enmod deflate headers proxy proxy_ajp proxy_balancer proxy_connect proxy_html proxy_http rewrite
     ```
-
 2. Configure proxy:
     ```
     <VirtualHost *:80>
@@ -180,22 +163,18 @@ In this case apache server can be used to redirect requests to different docker 
         ...
     </VirtualHost>
     ```
-
 3. Copy **./etc/apache2/sites-available/mercurial.conf** to **/etc/apache2/sites-available** folder:
     ```
     sudo cp ./etc/apache2/sites-available/mercurial.conf /etc/apache2/sites-available
     ```
-
 4. Copy **./etc/apache2/sites-available/mpasstool.conf** to **/etc/apache2/sites-available** folder:
     ```
     sudo cp ./etc/apache2/sites-available/mpasstool.conf /etc/apache2/sites-available
     ```
-
 5. Enable apache sites:
     ```
     sudo a2ensite mercurial mpasstool
     ```
-
 6. Restart apache service:
     ```
     sudo service apache2 restart
