@@ -1,2 +1,3 @@
 #!/bin/bash
-apache2ctl -k graceful
+source /mercurial/scripts/containerConfig
+$stopWebCmd && eval $stopDummyCmd
