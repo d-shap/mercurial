@@ -3,9 +3,14 @@ if [ "$1" != "" ];
 then
     TEMPTILE="/mercurial/backups/tmp_$1.tar.gz"
     FILE="/mercurial/backups/$1.tar.gz"
+    source /mercurial/scripts/containerConfig
+
+    $stopWebCmd
 
     cd /mercurial
     tar -czf $TEMPTILE repositories
     rm -rf $FILE
     mv $TEMPTILE $FILE
+
+    $startWebCmd
 fi
