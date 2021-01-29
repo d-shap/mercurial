@@ -1,2 +1,2 @@
 #!/bin/bash
-apache2ctl -k graceful
+apache2ctl stop
