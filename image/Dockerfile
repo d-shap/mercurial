@@ -18,8 +18,10 @@ RUN         apt-get update && \
             apt-get install --assume-yes \
                 apt-utils \
                 build-essential \
+                cron \
+                net-tools \
+                procps \
                 software-properties-common \
-                unzip \
                 vim \
                 wget && \
             apt-get update && \
@@ -88,11 +90,15 @@ RUN         apt-get update && \
             chown -R -h $RUN_USER:$RUN_GROUP /var/www/html
 
 # Configure helper scripts
-RUN         mv /tmp/startup /mercurial/scripts && \
-            mv /tmp/shutdown /mercurial/scripts && \
-            mv /tmp/createrepositoryhgrc /mercurial/scripts && \
-            mv /tmp/backup /mercurial/scripts && \
-            mv /tmp/restore /mercurial/scripts && \
+RUN         mv /tmp/containerConfig /mercurial/scripts && \
+            mv /tmp/containerDummy /mercurial/scripts && \
+            mv /tmp/containerStartup /mercurial/scripts && \
+            mv /tmp/containerShutdown /mercurial/scripts && \
+            mv /tmp/webStartup /mercurial/scripts && \
+            mv /tmp/webShutdown /mercurial/scripts && \
+            mv /tmp/utilCreateRepositoryHgrc /mercurial/scripts && \
+            mv /tmp/utilBackup /mercurial/scripts && \
+            mv /tmp/utilRestore /mercurial/scripts && \
             chmod 755 /mercurial/scripts/*
 
 USER        $RUN_USER
