@@ -6,5 +6,6 @@ then
 
     cd /mercurial
     tar -czf $TEMPTILE repositories
+    rm -rf $FILE
     mv $TEMPTILE $FILE
 fi
