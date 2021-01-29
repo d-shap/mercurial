@@ -15,6 +15,7 @@ then
 fi
 
 trap /mercurial/scripts/shutdown HUP SIGHUP INT SIGINT QUIT SIGQUIT TERM SIGTERM
+
 source /mercurial/scripts/containerConfig
 $startWebCmd & $startDummyCmd
 eval $waitDummyCmd
