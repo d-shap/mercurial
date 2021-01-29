@@ -29,7 +29,7 @@ hg() {
 
     case $2 in
         init)
-            docker exec -it "$CID" /mercurial/scripts/createrepositoryhgrc "$fullRepositoryPath"
+            docker exec -it "$CID" /mercurial/scripts/utilCreateRepositoryHgrc "$fullRepositoryPath"
             if [ $? -ne 0 ];
             then
                 exit 2
@@ -47,7 +47,7 @@ backup() {
         exit 1
     fi
 
-    docker exec "$CID" /mercurial/scripts/backup "${arguments[1]}"
+    docker exec "$CID" /mercurial/scripts/utilBackup "${arguments[1]}"
     if [ $? -ne 0 ];
     then
         exit 2
@@ -63,7 +63,7 @@ restore() {
         exit 1
     fi
 
-    docker exec "$CID" /mercurial/scripts/restore "${arguments[1]}"
+    docker exec "$CID" /mercurial/scripts/utilRestore "${arguments[1]}"
     if [ $? -ne 0 ];
     then
         exit 2
