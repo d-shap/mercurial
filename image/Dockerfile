@@ -105,4 +105,4 @@ USER        $RUN_USER
 
 EXPOSE      $RUN_PORT
 
-ENTRYPOINT  ["/mercurial/scripts/startup"]
+ENTRYPOINT  ["/mercurial/scripts/containerStartup"]
