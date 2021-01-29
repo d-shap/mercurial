@@ -14,7 +14,7 @@ then
     chmod 644 /mercurial/repositories/users
 fi
 
-trap /mercurial/scripts/shutdown SIGHUP SIGINT SIGTERM TERM
-
-startApacheCmd="apache2ctl -D FOREGROUND"
-$startApacheCmd & wait
+trap /mercurial/scripts/shutdown HUP SIGHUP INT SIGINT QUIT SIGQUIT TERM SIGTERM
+source /mercurial/scripts/containerConfig
+$startWebCmd & $startDummyCmd
+eval $waitDummyCmd
