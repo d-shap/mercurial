@@ -8,8 +8,8 @@ ENV         DEBIAN_FRONTEND=noninteractive \
             RUN_USER=mercurial \
             RUN_GROUP=mercurial \
             RUN_PORT=8009 \
-            APACHE_RUN_USER=$RUN_USER \
-            APACHE_RUN_GROUP=$RUN_GROUP
+            APACHE_RUN_USER=mercurial \
+            APACHE_RUN_GROUP=mercurial
 
 COPY        . /tmp
 
@@ -19,6 +19,7 @@ RUN         apt-get update && \
                 apt-utils \
                 build-essential \
                 cron \
+                curl \
                 net-tools \
                 procps \
                 software-properties-common \
