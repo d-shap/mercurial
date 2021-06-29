@@ -3,8 +3,8 @@ apache2ctl -k stop
 while [ true ];
 do
     sleep 1
-    ps axf | grep apache2 | grep -v grep
-    if [[ $? -ne 0 ]];
+    result=$(ps axf | grep apache2 | grep -v grep)
+    if [[ "$result" -eq "" ]];
     then
         break
     fi
