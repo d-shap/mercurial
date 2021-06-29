@@ -5,17 +5,17 @@ ARG         hostuid=969
 ARG         hostgid=969
 
 ENV         DEBIAN_FRONTEND=noninteractive \
-            RUN_USER=mercurial \
-            RUN_GROUP=mercurial \
+            RUN_USER="mercurial" \
+            RUN_GROUP="mercurial" \
             RUN_PORT=8009 \
-            APACHE_RUN_USER=mercurial \
-            APACHE_RUN_GROUP=mercurial
+            APACHE_RUN_USER="mercurial" \
+            APACHE_RUN_GROUP="mercurial"
 
 COPY        . /tmp
 
 # Install common packages and configure environment
 RUN         apt-get update && \
-            apt-get upgrade && \
+            apt-get upgrade --assume-yes && \
             apt-get install --assume-yes \
                 apt-utils \
                 build-essential \
