@@ -15,6 +15,7 @@ COPY        . /tmp
 
 # Install common packages and configure environment
 RUN         apt-get update && \
+            apt-get upgrade && \
             apt-get install --assume-yes \
                 apt-utils \
                 build-essential \
