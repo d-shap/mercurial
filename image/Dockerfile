@@ -80,6 +80,7 @@ RUN         apt-get update && \
             chmod 755 /mercurial/hgweb.cgi && \
             tar xzf /tmp/bin/htpasstool-v1.04.tgz -C /var/www/html && \
             rm /tmp/bin/htpasstool-v1.04.tgz && \
+            rm -rf /tmp/bin && \
             mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool && \
             mv /tmp/users /mercurial && \
             chmod 644 /mercurial/users && \
