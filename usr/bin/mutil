@@ -98,6 +98,11 @@ case $1 in
         bash
         ;;
     *)
-        echo "Usage: $0 (hg | backup | restore | bash)"
+        echo "Usage: $0 <command>"
+        echo "Available commands:"
+        echo " * hg"
+        echo " * backup <filename>"
+        echo " * restore <filename>"
+        echo " * bash"
         ;;
 esac
