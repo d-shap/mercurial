@@ -47,8 +47,8 @@ RUN         mkdir /mercurial && \
 # Install Apache
 RUN         apt-get update && \
             apt-get install --assume-yes \
-                libapache2-mod-php \
-                apache2 && \
+                apache2 \
+                libapache2-mod-php && \
             apt-get clean && \
             sed -i 's|:80>|:'"$RUN_PORT"'>|' /etc/apache2/sites-available/000-default.conf && \
             sed -i 's|#ServerName www.example.com|ServerName localhost|' /etc/apache2/sites-available/000-default.conf && \
@@ -67,7 +67,7 @@ RUN         apt-get update && \
             mkdir -p /var/run/apache2 && \
             chown -R $RUN_USER:$RUN_GROUP /var/run/apache2
 
-# Configure app
+# Configure mercurial
 RUN         apt-get update && \
             apt-get install --assume-yes \
                 mercurial && \
@@ -77,8 +77,10 @@ RUN         apt-get update && \
             mv /tmp/hgweb.config /mercurial && \
             chmod 644 /mercurial/hgweb.config && \
             sed 's|config = ".*"|config = "/mercurial/hgweb.config"|' /usr/share/doc/mercurial/examples/hgweb.cgi > /mercurial/hgweb.cgi && \
-            chmod 755 /mercurial/hgweb.cgi && \
-            tar xzf /tmp/bin/htpasstool-v1.04.tgz -C /var/www/html && \
+            chmod 755 /mercurial/hgweb.cgi
+
+# Configure htpasstool
+RUN         tar xzf /tmp/bin/htpasstool-v1.04.tgz -C /var/www/html && \
             rm /tmp/bin/htpasstool-v1.04.tgz && \
             rm -rf /tmp/bin && \
             mv /var/www/html/htpasstool-v1.04 /var/www/html/mpasstool && \
